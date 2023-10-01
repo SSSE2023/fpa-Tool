@@ -1,4 +1,5 @@
-package org.FPAS;
+package org.FPAS.model;
+
 import java.util.List;
 import java.util.ArrayList;
 

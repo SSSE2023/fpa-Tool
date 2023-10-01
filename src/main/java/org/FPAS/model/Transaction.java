@@ -1,6 +1,4 @@
-package org.FPAS;
-import java.util.List;
-import java.util.ArrayList;
+package org.FPAS.model;
 
 public class Transaction {
     private int transactionID;

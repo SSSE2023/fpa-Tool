@@ -1,4 +1,4 @@
-package org.FPAS;
+package org.FPAS.model;
 
 public class Investment {
     private String name;
