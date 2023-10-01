@@ -1,7 +1,9 @@
 package org.FPAS;
+import org.FPAS.model.*;
+
 import java.util.List;
 import java.util.ArrayList;
-public class Main {
+public class MainApp {
     public static void main(String[] args) {
 
         // Create instances of the User class using the constructor
