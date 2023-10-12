@@ -1,11 +1,35 @@
 package org.FPAS;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.FPAS.model.*;
 
 import java.util.List;
 import java.util.ArrayList;
-public class MainApp {
-    public static void main(String[] args) {
 
+
+public class MainApp extends Application {
+    @Override
+    public void start(Stage stage) {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AuthenticationView.fxml"));
+            Scene scene = new Scene(loader.load());
+            stage.setTitle("Login Page");
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        launch(args);
         // Create instances of the User class using the constructor
         User user1 = new User("john_doe", "password123", 1, "john.doe@example.com", "user");
         User user2 = new User("admin", "admin_password", 2, "admin@example.com", "admin");
@@ -53,6 +77,8 @@ public class MainApp {
         // Calculate and print standard deviation
         double standardDeviation = performanceMetrics.calculateStandardDeviation();
         System.out.println("Standard Deviation: " + standardDeviation);
-    }
 
+
+    }
 }
+
