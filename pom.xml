@@ -33,6 +33,11 @@
             <artifactId>javafx-graphics</artifactId>
             <version>19</version> <!-- Replace with the desired version -->
         </dependency>
+        <dependency>
+            <groupId>de.jensd</groupId>
+            <artifactId>fontawesomefx-icons525</artifactId>
+            <version>4.2.0-9.1.2</version>
+        </dependency>
     </dependencies>
 
     <build>
