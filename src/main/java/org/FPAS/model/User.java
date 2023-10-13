@@ -1,12 +1,21 @@
 package org.FPAS.model;
 
+import javax.persistence.*;
+
+@Entity
 public class User {
     private String username;
     private String password;
+    @Id
     private int userID;
     private String email;
     private String role;
 
+    public User() {
+
+    }
+
+    @Basic
     public String getUsername() {
         return username;
     }
@@ -23,6 +32,7 @@ public class User {
         this.password = password;
     }
 
+    @Basic
     public int getUserID() {
         return userID;
     }
@@ -54,4 +64,6 @@ public class User {
         this.email = email;
         this.role = role;
     }
+
+
 }

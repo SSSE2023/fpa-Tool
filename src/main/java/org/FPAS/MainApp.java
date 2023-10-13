@@ -7,7 +7,12 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.FPAS.model.*;
+import org.h2.tools.Server;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -28,7 +33,8 @@ public class MainApp extends Application {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
+        startDatabase();
         launch(args);
         // Create instances of the User class using the constructor
         User user1 = new User("john_doe", "password123", 1, "john.doe@example.com", "user");
@@ -78,7 +84,23 @@ public class MainApp extends Application {
         double standardDeviation = performanceMetrics.calculateStandardDeviation();
         System.out.println("Standard Deviation: " + standardDeviation);
 
+        final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("br.com.fredericci.pu");
+        final EntityManager entityManager = entityManagerFactory.createEntityManager();
 
+        entityManager.getTransaction().begin();
+        entityManager.persist(user1);
+        entityManager.persist(user2);
+        entityManager.getTransaction().commit();
+        stopDatabase();
+
+    }
+    private static Server s = new Server();
+    private static void startDatabase() throws SQLException {
+        s.runTool("-tcp", "-web", "-ifNotExists");
+    }
+
+    private static void stopDatabase()  {
+        s.shutdown();
     }
 }
 
