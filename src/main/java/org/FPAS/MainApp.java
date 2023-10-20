@@ -37,8 +37,11 @@ public class MainApp extends Application {
         startDatabase();
         launch(args);
         // Create instances of the User class using the constructor
-        User user1 = new User("john_doe", "password123", 1, "john.doe@example.com", "user");
-        User user2 = new User("admin", "admin_password", 2, "admin@example.com", "admin");
+        User user1 = new User("john_doe123", "password123", 189, "john.doe@example.com", "user");
+        User user2 = new User("admin", "admin_password", 122, "admin@example.com", "admin");
+        User user3 = new User("lea_smith96", "br%646#472hfg", 398, "lea.smith96@example.com", "user");
+        User user4 = new User("robert_brown85", "4&89bgu31t9", 405, "robert.brown85@example.com", "user");
+        User user5 = new User("aasya_lee001", "r$bi5bi33ui@i", 215, "aasya.lee01@example.com", "user");
 
         // Create initial investments
         List<Investment> initialInvestments = new ArrayList<>();
@@ -90,6 +93,9 @@ public class MainApp extends Application {
         entityManager.getTransaction().begin();
         entityManager.persist(user1);
         entityManager.persist(user2);
+        entityManager.persist(user3);
+        entityManager.persist(user4);
+        entityManager.persist(user5);
         entityManager.getTransaction().commit();
         stopDatabase();
 
