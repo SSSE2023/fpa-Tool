@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.FPAS.javaFXApp.controller.mainController">
+<BorderPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.FPAS.javaFXApp.controller.authController">
     <left>
         <AnchorPane prefHeight="500.0" prefWidth="374.0" style="-fx-background-color: S;" BorderPane.alignment="CENTER">
          <children>
