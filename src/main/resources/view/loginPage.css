@@ -71,4 +71,8 @@
     -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;
 }
+#signUpButton{
+    -fx-background-color: #232D3F;
+    -fx-pref-width: 100px;
+}
 

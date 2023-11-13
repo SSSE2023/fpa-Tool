@@ -1,7 +1,15 @@
 package org.FPAS.javaFXApp.controller;
 
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import org.FPAS.javaFXApp.javaFXMain;
 import org.FPAS.springApp.SpringManager;
 import javafx.event.ActionEvent;
+
+import java.awt.*;
+import java.io.IOException;
 
 public class authController {
 
