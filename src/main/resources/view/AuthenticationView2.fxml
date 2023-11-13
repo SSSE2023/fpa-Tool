@@ -28,26 +28,11 @@
                       <Button fx:id="loginButton" layoutX="72.0" layoutY="324.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="117.0" styleClass="buttons" text="Sign-in" textFill="WHITE" />
                       <Button mnemonicParsing="false" opacity="0.0" prefHeight="30.0" prefWidth="26.0" text=" " />
                       <Button mnemonicParsing="false" opacity="0.0" prefHeight="30.0" prefWidth="26.0" text=" " />
-                      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="182.0" layoutY="410.0" pickOnBounds="true" preserveRatio="true" styleClass="icons">
-                          <image>
-                              <Image url="@google.png" />
-                          </image>
-                      </ImageView>
-                      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="101.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true" styleClass="icons">
-                          <image>
-                              <Image url="@apple.png" />
-                          </image>
-                      </ImageView>
                       <Label layoutX="149.0" layoutY="375.0" prefHeight="16.0" prefWidth="122.0" text="OR">
                           <font>
                               <Font size="10.0" />
                           </font>
                       </Label>
-                      <ImageView fitHeight="29.0" fitWidth="26.0" layoutX="143.0" layoutY="409.0" pickOnBounds="true" preserveRatio="true" styleClass="icons">
-                          <image>
-                              <Image url="@facebook-app-symbol.png" />
-                          </image>
-                      </ImageView>
                   <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="75.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@user.png" />
@@ -63,6 +48,7 @@
                         <Image url="@piechart.png" />
                      </image>
                   </ImageView>
+                  <Button fx:id="signUpButton" layoutX="109.0" layoutY="406.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="100.0" styleClass="buttons" text="Sign-up" />
                </children>
                <effect>
                   <DropShadow />
