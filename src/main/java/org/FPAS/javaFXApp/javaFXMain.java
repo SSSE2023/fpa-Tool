@@ -15,6 +15,7 @@ public class javaFXMain extends Application {
         Scene scene = new Scene(loader.load());
         stage.setTitle("Login Page");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
         stage.setOnCloseRequest(event ->{
             javafx.application.Platform.exit();
