@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="500.0" prefWidth="700.0" stylesheets="@loginPage.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="500.0" prefWidth="700.0" stylesheets="@loginPage.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.FPAS.javaFXApp.controller.authController">
     <left>
         <AnchorPane fx:id="leftPane" prefHeight="500.0" prefWidth="496.0" BorderPane.alignment="CENTER" />
     </left>
@@ -23,8 +23,8 @@
                <children>
                       <Button mnemonicParsing="false" opacity="0.0" prefHeight="30.0" prefWidth="26.0" text=" " />
                       <Button mnemonicParsing="false" opacity="0.0" prefHeight="30.0" prefWidth="26.0" text=" " />
-                      <TextField alignment="TOP_CENTER" layoutX="67.0" layoutY="223.0" prefHeight="27.0" prefWidth="183.0" promptText="Username" styleClass="text-inputs" />
-                      <PasswordField alignment="TOP_CENTER" layoutX="66.0" layoutY="269.0" prefHeight="27.0" prefWidth="186.0" promptText="Password" styleClass="text-inputs" />
+                      <TextField fx:id="login_username" alignment="TOP_CENTER" layoutX="67.0" layoutY="223.0" prefHeight="27.0" prefWidth="183.0" promptText="Username" styleClass="text-inputs" />
+                      <PasswordField fx:id="login_password" alignment="TOP_CENTER" layoutX="66.0" layoutY="269.0" prefHeight="27.0" prefWidth="186.0" promptText="Password" styleClass="text-inputs" />
                       <Button fx:id="loginButton" layoutX="72.0" layoutY="324.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="117.0" styleClass="buttons" text="Sign-in" textFill="WHITE" />
                       <Button mnemonicParsing="false" opacity="0.0" prefHeight="30.0" prefWidth="26.0" text=" " />
                       <Button mnemonicParsing="false" opacity="0.0" prefHeight="30.0" prefWidth="26.0" text=" " />
@@ -43,9 +43,9 @@
                         <Image url="@show.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="87.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="142.0" fitWidth="243.0" layoutX="20.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@piechart.png" />
+                        <Image url="@Logo.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="signUpButton" layoutX="109.0" layoutY="406.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="100.0" styleClass="buttons" text="Sign-up" />

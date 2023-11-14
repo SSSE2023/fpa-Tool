@@ -1,29 +1,52 @@
 package org.FPAS.javaFXApp.controller;
 
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import org.FPAS.javaFXApp.javaFXMain;
-import org.FPAS.springApp.SpringManager;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import lombok.NoArgsConstructor;
+import org.FPAS.javaFXApp.Utils;
+import org.FPAS.springApp.model.ClientRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
-import java.awt.*;
-import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+@Controller
+@NoArgsConstructor
 
-public class authController {
+public class authController implements Initializable {
+    @FXML
+    private Button loginButton;
+    @FXML
+    private Button signUpButton;
+    @FXML
+    private TextField login_username;
+    @FXML
+    private TextField login_password;
+    @Autowired
+    ClientRepository personRepository;
 
-    public void handleClick(ActionEvent actionEvent) {
-        System.out.println("Starting Spring app");
-        SpringManager.startSpringApp();
+    public authController(ClientRepository personRepository) {
+        this.personRepository = personRepository;
     }
 
-    public void handleStopClick(ActionEvent actionEvent) {
-        System.out.println("Shutting down Spring app");
-        SpringManager.stopSpringApp();
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        loginButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Utils.loginUser(event, login_username.getText(), login_password.getText());
+            }
+        });
+        signUpButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Utils.changeScene(event, "signUpView.fxml", null, null, signUpController.class);
+            }
+        });
     }
 
-    public void printAll(ActionEvent actionEvent) {
-        SpringManager.getSpringApp().printAll();
-    }
 }

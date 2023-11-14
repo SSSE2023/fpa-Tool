@@ -56,6 +56,12 @@
             <artifactId>javafx-fxml</artifactId>
             <version>20.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.1.214</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -80,6 +86,7 @@
                     <mainClass>org.FPAS.javaFXApp.javaFXMain</mainClass>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 
