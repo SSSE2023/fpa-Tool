@@ -16,6 +16,12 @@ public class javaFXMain extends Application {
         stage.setTitle("Login Page");
         stage.setScene(scene);
         stage.show();
+        stage.setOnCloseRequest(event ->{
+            javafx.application.Platform.exit();
+            SpringManager.stopSpringApp();
+ });
+
     }
+
 
 }
