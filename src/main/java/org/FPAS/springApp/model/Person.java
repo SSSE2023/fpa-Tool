@@ -18,6 +18,7 @@ public class Person {
     @Id
     @GeneratedValue
     private int userID;
+    private String Name;
     private String username;
     private String password;
     private String email;
