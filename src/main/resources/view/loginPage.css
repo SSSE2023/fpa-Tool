@@ -1,0 +1,78 @@
+*{
+    -fx-font-family: Inter;
+    -fx-text-fill: #FFF6E0;
+}
+
+.buttons{
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+    -fx-font-size: 14px;
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 3px;
+}
+.buttons:hover{
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 10, 0, 0, 1);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-font-size: 15px;
+}
+.buttons:pressed{
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 10, 0, 0, 1);
+}
+.text-inputs{
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #FFFFFF;
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+    -fx-font-size: 14px;
+    -fx-text-fill: #000000;
+
+}
+.text-inputs:hover{
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 10, 0, 0, 1);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+
+}
+
+
+#leftPane{
+
+    -fx-pref-width: 450px;
+    -fx-background-image: url("backgroudLeft.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover; /* or contain, or specific dimensions */
+    -fx-background-position: center center;
+}
+#rightPane{
+
+    -fx-background-image: url("backgroundRight.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover; /* or contain, or specific dimensions */
+    -fx-background-position: center center;
+
+}
+#upperRightPane{
+    -fx-background-radius: 60 0 0 0;
+    -fx-border-radius: 60 0 0 0;
+    -fx-background-color: #D8D9DA;
+}
+#loginButton{
+    -fx-background-color: #232D3F;
+    -fx-pref-width: 175px;
+}
+#bitcoin:hover{
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 10, 0, 0, 1);
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+}
+.icons:hover{
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 1);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+#signUpButton{
+    -fx-background-color: #232D3F;
+    -fx-pref-width: 100px;
+}
+

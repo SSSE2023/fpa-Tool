@@ -8,18 +8,17 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Person {
+public class Benchmark {
     @Id
     @GeneratedValue
-    private int userID;
-    private String Name;
-    private String username;
-    private String password;
-    private String email;
+    private long benchmarkID;
+    private String name;
+    private double benchmarkReturn;
+
+    // Add any other necessary fields
 }

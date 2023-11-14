@@ -18,29 +18,30 @@ import java.util.ResourceBundle;
 @Controller
 @NoArgsConstructor
 
-public class authController implements Initializable {
-    @FXML
-    private Button loginButton;
+public class signUpController implements Initializable {
     @FXML
     private Button signUpButton;
     @FXML
-    private TextField login_username;
+    private TextField name;
     @FXML
-    private TextField login_password;
+    private TextField sign_username;
+    @FXML
+    private TextField sign_password;
+
     @Autowired
     ClientRepository personRepository;
 
-    public authController(ClientRepository personRepository) {
+    public signUpController(ClientRepository personRepository) {
         this.personRepository = personRepository;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        loginButton.setOnAction(new EventHandler<ActionEvent>() {
+        signUpButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (!login_username.getText().trim().isEmpty() && !login_password.getText().trim().isEmpty()) {
-                    Utils.loginUser(event, login_username.getText(), login_password.getText());
+                if(!sign_username.getText().trim().isEmpty() && !sign_password.getText().trim().isEmpty() && !name.getText().trim().isEmpty()) {
+                    Utils.signUpUser(event, name.getText(), sign_username.getText(), sign_password.getText());
                 }
                 else{
                     System.out.println("Invalid Information");
@@ -50,12 +51,5 @@ public class authController implements Initializable {
                 }
             }
         });
-        signUpButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                Utils.changeScene(event, "signUpView.fxml", null, null, signUpController.class);
-            }
-        });
     }
-
 }

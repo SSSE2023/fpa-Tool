@@ -8,18 +8,21 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Person {
+public class Investment {
     @Id
     @GeneratedValue
-    private int userID;
-    private String Name;
-    private String username;
-    private String password;
-    private String email;
+    private long investmentID;
+    private String name;
+    private String symbol; //AAPL , TSL
+    private int quantity;
+    private double purchasePrice;
+    private String purchaseDate;
+    private String investmentType;
+
+    // Add any other necessary fields - Easwar your job
 }
