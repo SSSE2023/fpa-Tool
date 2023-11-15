@@ -9,7 +9,7 @@ import org.FPAS.springApp.SpringManager;
 public class javaFXMain extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(javaFXMain.class.getResource("/view/PortfolioView.fxml"));
+        FXMLLoader loader = new FXMLLoader(javaFXMain.class.getResource("/view/authenticationView2.fxml"));
         SpringManager.startSpringApp();
 
         Scene scene = new Scene(loader.load());

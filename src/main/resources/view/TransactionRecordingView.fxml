@@ -30,16 +30,22 @@
                 </ButtonBar>
                 <AnchorPane prefHeight="305.0" prefWidth="118.0">
                     <children>
-                        <Button layoutX="6.0" layoutY="205.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" styleClass="buttons-new" text=" Settings" />
-                        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="8.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
+                        <Button layoutX="6.0" layoutY="189.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" styleClass="buttons-new" text=" Settings" />
+                        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="8.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@setting.png" />
                             </image>
                         </ImageView>
-                        <Button layoutX="6.0" layoutY="246.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" styleClass="buttons-new" text="Help" />
-                        <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="6.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
+                        <Button layoutX="6.0" layoutY="226.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" styleClass="buttons-new" text="Help" />
+                        <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="6.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@help.png" />
+                            </image>
+                        </ImageView>
+                        <Button layoutX="6.0" layoutY="261.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" styleClass="buttons-new" text="Sign out" />
+                        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="9.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@logout.png" />
                             </image>
                         </ImageView>
                     </children>
