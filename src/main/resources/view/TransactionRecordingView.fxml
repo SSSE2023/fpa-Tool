@@ -42,7 +42,7 @@
                                 <Image url="@help.png" />
                             </image>
                         </ImageView>
-                        <Button layoutX="6.0" layoutY="261.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" styleClass="buttons-new" text="Sign out" />
+                        <Button fx:id="Sign_out" layoutX="6.0" layoutY="261.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" styleClass="buttons-new" text="Sign out" />
                         <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="9.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@logout.png" />

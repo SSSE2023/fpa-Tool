@@ -52,7 +52,7 @@
                         <DropShadow />
                     </effect>
                 </AnchorPane>
-            <TextField fx:id="sign_username1" alignment="TOP_CENTER" layoutX="67.0" layoutY="258.0" prefHeight="27.0" prefWidth="183.0" promptText="Email" styleClass="text-inputs" />
+            <TextField fx:id="Emails" alignment="TOP_CENTER" layoutX="67.0" layoutY="258.0" prefHeight="27.0" prefWidth="183.0" promptText="Email" styleClass="text-inputs" />
             <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="76.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@user.png" />

@@ -1,0 +1,5 @@
+2023-11-15 16:21:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-11-15 16:36:17 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * [*]FROMCLIENT  INVESTMENT"; SQL statement:
+SELECT * FROMCLIENT  INVESTMENT [42000-214]

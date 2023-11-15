@@ -7,10 +7,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import lombok.NoArgsConstructor;
-import org.FPAS.javaFXApp.controller.PerformanceAnalysisController;
+import org.FPAS.javaFXApp.controller.PortfolioController;
 import org.FPAS.javaFXApp.controller.authController;
 import org.FPAS.javaFXApp.controller.mainController;
-import org.FPAS.springApp.SpringManager;
 import org.FPAS.springApp.model.Client;
 import org.FPAS.springApp.model.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,7 @@ import java.util.Optional;
 @Component
 @ComponentScan(basePackages = "org.FPAS.javaFXApp")
 public class Utils {
-    private static ClientRepository personRepository;
+    public static ClientRepository personRepository;
 
     @Autowired
     public Utils(ClientRepository personRepository) {
@@ -36,6 +35,7 @@ public class Utils {
         return Utils.class.getResource(fxmlFile);
     }
     public static void changeScene(ActionEvent event, String fxmlFile, String username, String password, Class<?> controllerClass) {
+
         try {
             String path = "/view/" + fxmlFile;
             URL resourceUrl = Utils.class.getResource(path);
@@ -63,12 +63,13 @@ public class Utils {
         }
     }
 
-    public static void signUpUser(ActionEvent event, String name, String username, String password) {
+    public static void signUpUser(ActionEvent event, String name, String username, String password,String email) {
         try {
             personRepository.save(Client.builder()
                 .name(name)
                 .username(username)
                 .password(password)
+                    .email(email)
                 .build());
         } catch (DataIntegrityViolationException e) {
             System.out.println("Username already exists.");
@@ -83,7 +84,7 @@ public class Utils {
 
         if (userOptional.isPresent()) {
             System.out.println("Login successful for user: " + username);
-            changeScene(event, "PortfolioView.fxml", username, password, PerformanceAnalysisController.class);
+            changeScene(event, "PortfolioView.fxml", username, password, PortfolioController.class);
         } else {
             System.out.println("Invalid credentials for user: " + username);
         }

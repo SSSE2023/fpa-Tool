@@ -171,6 +171,8 @@ public class config {
             public Optional<Client> findByUsernameAndPassword(String username, String password) {
                 return Optional.empty();
             }
+
+
         }; // Adjust based on your actual configuration
     }
 }
