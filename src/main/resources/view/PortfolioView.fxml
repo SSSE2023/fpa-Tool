@@ -92,7 +92,7 @@
             <right>
                 <AnchorPane prefHeight="77.0" prefWidth="236.0" BorderPane.alignment="CENTER">
                     <children>
-                  <Label fx:id="usernameField" contentDisplay="CENTER" layoutX="15.0" layoutY="30.0" prefHeight="25.0" prefWidth="192.0" />
+                  <Label fx:id="usernameField" contentDisplay="CENTER" layoutX="99.0" layoutY="27.0" prefHeight="25.0" prefWidth="106.0" />
                     </children></AnchorPane>
             </right>
             <center>
