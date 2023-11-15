@@ -48,8 +48,8 @@
                                 <Image url="@user.png" />
                             </image>
                         </ImageView>
-                  <Button fx:id="login" layoutX="179.0" layoutY="433.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="60.0" styleClass="buttons" text="Login" />
-                  <Label layoutX="66.0" layoutY="438.0" prefHeight="27.0" prefWidth="104.0" text="Already a member?" />
+                  <Label fx:id="textMember" layoutX="66.0" layoutY="435.0" prefHeight="27.0" prefWidth="121.0" text="Already a member?" />
+                  <Button fx:id="login" layoutX="199.0" layoutY="431.0" mnemonicParsing="false" styleClass="buttons" text="Login" />
                     </children>
                     <effect>
                         <DropShadow />
