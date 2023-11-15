@@ -8,6 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import lombok.NoArgsConstructor;
+import org.FPAS.javaFXApp.SharedData;
 import org.FPAS.javaFXApp.Utils;
 import org.FPAS.springApp.model.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,18 +29,20 @@ public class authController implements Initializable {
     @FXML
     private TextField login_password;
     @Autowired
-    ClientRepository personRepository;
+    ClientRepository clientRepository;
 
-    public authController(ClientRepository personRepository) {
-        this.personRepository = personRepository;
+    public authController(ClientRepository clientRepository) {
+        this.clientRepository = clientRepository;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         loginButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 if (!login_username.getText().trim().isEmpty() && !login_password.getText().trim().isEmpty()) {
+                    SharedData.setCredentials(login_username.getText(), login_password.getText());
                     Utils.loginUser(event, login_username.getText(), login_password.getText());
                 }
                 else{
@@ -48,6 +51,7 @@ public class authController implements Initializable {
                     alert.setContentText("Fill all information");
                     alert.show();
                 }
+
             }
         });
         signUpButton.setOnAction(new EventHandler<ActionEvent>() {

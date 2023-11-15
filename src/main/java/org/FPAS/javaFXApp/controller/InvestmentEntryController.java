@@ -17,6 +17,8 @@ import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static org.FPAS.javaFXApp.Utils.changeScene;
+
 @Controller
 @NoArgsConstructor
 
@@ -25,7 +27,8 @@ public class InvestmentEntryController implements Initializable {
     private Button transactionButton;
     @FXML
     private Button dashboardButton;
-
+    @FXML
+    private Button Sign_out;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         transactionButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -40,6 +43,13 @@ public class InvestmentEntryController implements Initializable {
                 Utils.changeScene(event, "PortfolioView.fxml", null, null, PortfolioController.class);
             }
         });
+        Sign_out.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                changeScene(event, "AuthenticationView2.fxml", null, null, authController.class);
+            }
+        });
+
 
     }
 }

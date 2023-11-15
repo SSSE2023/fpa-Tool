@@ -2,6 +2,7 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
@@ -47,12 +48,14 @@
                                 <Image url="@user.png" />
                             </image>
                         </ImageView>
+                  <Button fx:id="login" layoutX="179.0" layoutY="433.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="60.0" styleClass="buttons" text="Login" />
+                  <Label layoutX="66.0" layoutY="438.0" prefHeight="27.0" prefWidth="104.0" text="Already a member?" />
                     </children>
                     <effect>
                         <DropShadow />
                     </effect>
                 </AnchorPane>
-            <TextField fx:id="sign_username1" alignment="TOP_CENTER" layoutX="67.0" layoutY="258.0" prefHeight="27.0" prefWidth="183.0" promptText="Email" styleClass="text-inputs" />
+            <TextField fx:id="Emails" alignment="TOP_CENTER" layoutX="67.0" layoutY="258.0" prefHeight="27.0" prefWidth="183.0" promptText="Email" styleClass="text-inputs" />
             <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="76.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@user.png" />
