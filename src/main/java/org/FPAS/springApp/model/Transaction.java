@@ -18,7 +18,7 @@ public class Transaction {
 
     @ManyToOne
     @JoinColumn(name = "investment_id")  // Adjust the column name based on your database schema
-    private Investment investment;
+    private Portfolio investment;
 
     private String transactionDate;
     private String transactionType; // Buy or sell
