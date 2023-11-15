@@ -9,7 +9,7 @@ import org.FPAS.springApp.SpringManager;
 public class javaFXMain extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(javaFXMain.class.getResource("/view/AuthenticationView2.fxml"));
+        FXMLLoader loader = new FXMLLoader(javaFXMain.class.getResource("/view/authenticationView2.fxml"));
         SpringManager.startSpringApp();
 
         Scene scene = new Scene(loader.load());
@@ -20,7 +20,7 @@ public class javaFXMain extends Application {
         stage.setOnCloseRequest(event ->{
             javafx.application.Platform.exit();
             SpringManager.stopSpringApp();
- });
+        });
 
     }
 

@@ -83,7 +83,7 @@ public class Utils {
 
         if (userOptional.isPresent()) {
             System.out.println("Login successful for user: " + username);
-            changeScene(event, "PerformanceAnalysisView.fxml", username, password, PerformanceAnalysisController.class);
+            changeScene(event, "PortfolioView.fxml", username, password, PerformanceAnalysisController.class);
         } else {
             System.out.println("Invalid credentials for user: " + username);
         }

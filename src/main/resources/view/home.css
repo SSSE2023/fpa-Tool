@@ -1,0 +1,84 @@
+*{
+    -fx-font-family: Inter;
+    -fx-text-fill: #FFF6E0;
+}
+
+#navBar{
+    -fx-background-color: #232D3F;
+}
+#dashBoard{
+    -fx-background-color: #D8D9DA;
+}
+#sideMenu{
+    -fx-background-color: #D8D9DA;
+    -fx-background-color: #232D3F;
+}
+.buttons{
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+    -fx-font-size: 11px;
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 3px;
+    -fx-background-color: #232D3F;
+}
+.buttons:hover{
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 10, 0, 0, 1);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-font-size: 11px;
+}
+.buttons-new{
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+    -fx-font-size: 11px;
+    -fx-border-width: 3px;
+    -fx-background-color: #232D3F;
+}
+.buttons-new:hover{
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 10, 0, 0, 1);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-font-size: 11px;
+    -fx-background-color: #323B4F;
+
+}
+#logo{
+    -fx-translate-x: 12px;
+}
+#logo:hover{
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 1);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+
+}
+.chart-horizontal-grid-lines {
+    -fx-stroke: transparent;
+}
+
+/* Hide vertical grid lines */
+.chart-vertical-grid-lines {
+    -fx-stroke: transparent;
+}
+.chart-axis-label {
+    -fx-padding: 5 0 0 0; /* Adjust padding for the x-axis labels */
+}
+#searchBar{
+    -fx-background-radius: 60 0 0 60;
+    -fx-background-color: #D8D9DA;
+    -fx-text-fill: #000000;
+
+}
+#searchBarButton{
+    -fx-background-radius: 0 60 60 0;
+    -fx-background-color: #CCCCCC;
+
+}
+#searchBarButton:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 10, 0, 0, 1);
+}
+#usernameField{
+    -fx-font-family: Inter;
+        -fx-text-fill: #FFF6E0;
+    -fx-font-size: 16px;
+
+}
