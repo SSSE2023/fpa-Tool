@@ -24,11 +24,11 @@ import java.util.Optional;
 @Component
 @ComponentScan(basePackages = "org.FPAS.javaFXApp")
 public class Utils {
-    public static ClientRepository personRepository;
+    public static ClientRepository clientRepository;
 
     @Autowired
-    public Utils(ClientRepository personRepository) {
-        Utils.personRepository = personRepository;
+    public Utils(ClientRepository clientRepository) {
+        Utils.clientRepository = clientRepository;
     }
 
     public static URL getResource(String fxmlFile) {
@@ -65,7 +65,7 @@ public class Utils {
 
     public static void signUpUser(ActionEvent event, String name, String username, String password,String email) {
         try {
-            personRepository.save(Client.builder()
+            clientRepository.save(Client.builder()
                 .name(name)
                 .username(username)
                 .password(password)
@@ -80,7 +80,7 @@ public class Utils {
 
 
     public static void loginUser(ActionEvent event, String username, String password) {
-        Optional<Client> userOptional = personRepository.findByUsernameAndPassword(username, password);
+        Optional<Client> userOptional = clientRepository.findByUsernameAndPassword(username, password);
 
         if (userOptional.isPresent()) {
             System.out.println("Login successful for user: " + username);

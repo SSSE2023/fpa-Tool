@@ -16,6 +16,8 @@ import org.springframework.stereotype.Controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static org.FPAS.javaFXApp.Utils.changeScene;
+
 @Controller
 @NoArgsConstructor
 public class signUpController implements Initializable {
@@ -29,12 +31,13 @@ public class signUpController implements Initializable {
     private TextField sign_password;
     @FXML
     private TextField Emails;
-
+    @FXML
+    private Button login;
     @Autowired
-    ClientRepository personRepository;
+    ClientRepository clientRepository;
 
-    public signUpController(ClientRepository personRepository) {
-        this.personRepository = personRepository;
+    public signUpController(ClientRepository clientRepository) {
+        this.clientRepository = clientRepository;
     }
 
     @Override
@@ -51,6 +54,12 @@ public class signUpController implements Initializable {
                     alert.setContentText("Fill all information");
                     alert.show();
                 }
+            }
+        });
+        login.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                changeScene(event, "AuthenticationView2.fxml", null, null, authController.class);
             }
         });
     }

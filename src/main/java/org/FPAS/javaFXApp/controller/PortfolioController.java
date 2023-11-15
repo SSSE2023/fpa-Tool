@@ -4,11 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.DepthTest;
 import javafx.scene.chart.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.text.Text;
 
 import lombok.NoArgsConstructor;
 import org.FPAS.javaFXApp.SharedData;
@@ -46,10 +44,10 @@ public class PortfolioController implements Initializable {
     @FXML
     private Button sign_out;
 
-    public static ClientRepository personRepository;
+    public static ClientRepository clientRepository;
     @Autowired
-    public PortfolioController(ClientRepository personRepository) {
-        PortfolioController.personRepository = personRepository;
+    public PortfolioController(ClientRepository clientRepository) {
+        PortfolioController.clientRepository = clientRepository;
     }
 
 
@@ -101,7 +99,7 @@ public class PortfolioController implements Initializable {
             }
         });
 
-        Optional<Client> userOptional = personRepository.findByUsernameAndPassword(SharedData.getUsername(), SharedData.getPassword());
+        Optional<Client> userOptional = clientRepository.findByUsernameAndPassword(SharedData.getUsername(), SharedData.getPassword());
                 userOptional.ifPresent(client -> {usernameField.setText(client.getName());
         });
     }

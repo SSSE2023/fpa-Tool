@@ -29,10 +29,10 @@ public class authController implements Initializable {
     @FXML
     private TextField login_password;
     @Autowired
-    ClientRepository personRepository;
+    ClientRepository clientRepository;
 
-    public authController(ClientRepository personRepository) {
-        this.personRepository = personRepository;
+    public authController(ClientRepository clientRepository) {
+        this.clientRepository = clientRepository;
     }
 
     @Override
