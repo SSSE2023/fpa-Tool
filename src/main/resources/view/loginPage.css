@@ -69,4 +69,11 @@
     -fx-background-color: #232D3F;
     -fx-pref-width: 100px;
 }
+#login{
+    -fx-background-color: #232D3F;
+
+}
+#textMember{
+    -fx-text-fill: #000000;
+}
 
