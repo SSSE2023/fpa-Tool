@@ -19,6 +19,8 @@ public class Benchmark {
     private long benchmarkID;
     private String name;
     private double benchmarkReturn;
+    private int Annum;
+
 
     // Add any other necessary fields
 }
