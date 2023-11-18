@@ -19,7 +19,7 @@ public class Portfolio {
     private String symbol; //AAPL , TSL
     private int quantity;
     private double purchasePrice;
-    private String purchaseDate;
+    private String purchaseYear;
     private String investmentType;
     @ManyToOne
     @JoinColumn(name = "ClientId")
