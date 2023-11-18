@@ -78,7 +78,19 @@
 }
 #usernameField{
     -fx-font-family: Inter;
-        -fx-text-fill: #FFF6E0;
+    -fx-text-fill: #FFF6E0;
     -fx-font-size: 16px;
+
+}
+.table-view{
+    -fx-background-color: #D8D9DA;
+
+}
+.column-header {
+    -fx-background-color: #323B4F;
+    -fx-text-fill: white;
+
+}
+.table-row-cell:selected {
 
 }
