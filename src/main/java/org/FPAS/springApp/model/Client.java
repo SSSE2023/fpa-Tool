@@ -1,9 +1,12 @@
 package org.FPAS.springApp.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+import org.FPAS.javaFXApp.controller.PortfolioController;
+
+import java.util.List;
+
+import static jakarta.persistence.CascadeType.*;
 
 
 @Entity
@@ -12,6 +15,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @Setter
+@Getter
 public class Client {
     @Id
     @GeneratedValue
@@ -20,4 +24,13 @@ public class Client {
     private String username;
     private String password;
     private String email;
+
+
+    public long getuID() {
+        return uID;
+    }
+
+    public void setuID(long uID) {
+        this.uID = uID;
+    }
 }

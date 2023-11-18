@@ -76,7 +76,6 @@
                         <NumberAxis side="LEFT" />
                     </yAxis>
                 </BarChart>
-                <Button fx:id="loadDataButton" layoutX="673.0" layoutY="443.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="58.0" styleClass="buttons" text="Load" />
                 <Text layoutX="482.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Portfolio Value (2023)" />
                 <Text layoutX="124.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Portfolio Value (Year)" />
             </children>

@@ -7,34 +7,26 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
 import lombok.NoArgsConstructor;
 import org.FPAS.javaFXApp.SharedData;
-import org.FPAS.springApp.model.Client;
-import org.FPAS.springApp.model.ClientRepository;
+import org.FPAS.springApp.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Component;
+
 import org.springframework.stereotype.Controller;
 
 import java.net.URL;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import static org.FPAS.javaFXApp.Utils.changeScene;
 
 @Controller
 @NoArgsConstructor
-@Component
-@ComponentScan(basePackages = "org.FPAS.javaFXApp")
 public class PortfolioController implements Initializable {
 
     @FXML
     private Button transactionButton;
     @FXML
     private Button investmentsButton;
-    @FXML
-    private Button loadDataButton;
     @FXML
     private LineChart<String, Number> lineChart;
     @FXML
@@ -43,11 +35,19 @@ public class PortfolioController implements Initializable {
     private Label usernameField;
     @FXML
     private Button sign_out;
-
+    public static PortfolioRepository portfolioRepository;
+    public static BenchmarkRepository benchmarkRepository;
     public static ClientRepository clientRepository;
+    public static InvestmentsRepository investmentsRepository;
+    //public static PerformanceMetricsRepository performanceMetricsRepository;
+
     @Autowired
-    public PortfolioController(ClientRepository clientRepository) {
+    public PortfolioController( ClientRepository clientRepository, PortfolioRepository portfolioRepository, BenchmarkRepository benchmarkRepository, InvestmentsRepository investmentsRepository){//,PerformanceMetricsRepository performanceMetricsRepository) {
         PortfolioController.clientRepository = clientRepository;
+        PortfolioController.benchmarkRepository = benchmarkRepository;
+        PortfolioController.portfolioRepository = portfolioRepository;
+        PortfolioController.investmentsRepository = investmentsRepository;
+        //PortfolioController.performanceMetricsRepository = performanceMetricsRepository;
     }
 
 
@@ -59,6 +59,7 @@ public class PortfolioController implements Initializable {
                 changeScene(event, "TransactionRecordingView.fxml", null, null, TransactionRecordingController.class);
             }
         });
+
         sign_out.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -72,36 +73,68 @@ public class PortfolioController implements Initializable {
                 changeScene(event, "InvestmentEntryView.fxml", null, null, InvestmentEntryController.class);
             }
         });
-        loadDataButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                CategoryAxis xLineAxis = new CategoryAxis();
-                NumberAxis yLineAxis = new NumberAxis();
-                XYChart.Series<String, Number> series = new XYChart.Series<>();
-                series.getData().add(new XYChart.Data<>("January", 10000));
-                series.getData().add(new XYChart.Data<>("February", 7500));
-                series.getData().add(new XYChart.Data<>("March", 9000));
-                series.getData().add(new XYChart.Data<>("April", 13000));
-                lineChart.getData().add(series);
-                lineChart.setLegendVisible(false);
 
-                NumberAxis xChartAxis = new NumberAxis();
-                NumberAxis yChartAxis = new NumberAxis();
-                XYChart.Series<String, Number> barChart1 = new XYChart.Series<>();
-                barChart1.getData().add(new XYChart.Data<>("2020", 2500));
-                barChart1.getData().add(new XYChart.Data<>("2021", 10000));
-                barChart1.getData().add(new XYChart.Data<>("2022", 15000));
-                barChart1.getData().add(new XYChart.Data<>("2023", 13000));
+      // loadLineChartData();
+        loadBarChartData();
 
-                // Add the series to the chart
-                barChart.getData().add(barChart1);
-                barChart.setLegendVisible(false);
-            }
-        });
 
         Optional<Client> userOptional = clientRepository.findByUsernameAndPassword(SharedData.getUsername(), SharedData.getPassword());
-                userOptional.ifPresent(client -> {usernameField.setText(client.getName());
+        userOptional.ifPresent(client -> {
+            usernameField.setText(client.getName());
         });
     }
+/*
+    private void loadLineChartData() {
+        Optional<Client> client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(),SharedData.getPassword());
+        long id= client.get().getuID();
+        List<PerformanceMetrics> performanceMetricsList = PerformanceMetricsRepository.findByClientId(id);
+        List<Benchmark> benchmark = benchmarkRepository.findAll();
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        XYChart.Series<String, Number> series2 = new XYChart.Series<>();
+
+        for (PerformanceMetrics data : performanceMetricsList) {
+            series.getData().add(new XYChart.Data<>("2020", data.getReturn_2020()));
+            series.getData().add(new XYChart.Data<>("2021", data.getReturn_2021()));
+            series.getData().add(new XYChart.Data<>("2022", data.getReturn_2022()));
+            series.getData().add(new XYChart.Data<>("2023", data.getReturn_2023()));
+        }
+        for(Benchmark data: benchmark){
+            series2.getData().add(new XYChart.Data<>(Integer.toString(data.getAnnum()), data.getBenchmarkReturn()));
+        }
+        List<XYChart.Series<String, Number>> seriesList = new ArrayList<>();
+        seriesList.add(series);
+        seriesList.add(series2);
+
+        lineChart.getData().addAll(seriesList);
     }
+
+
+*/
+
+
+    private void loadBarChartData () {
+        // Fetch the client based on username and password
+        Optional<Client> client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(),SharedData.getPassword());
+
+        // Get the uID of the client
+        long id= client.get().getuID();
+
+        // Fetch the portfolio data for the client using the uID
+        List<Portfolio> portfolioDataList = portfolioRepository.findByClientId(id);
+
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+
+        // Loop through the portfolio data and add it to the series
+        for (Portfolio data : portfolioDataList) {
+            series.getData().add(new XYChart.Data<>(data.getSymbol(), data.getPurchasePrice() * data.getQuantity()));
+        }
+
+        // Clear the old data from the chart and add the new series
+        barChart.getData().clear();
+        barChart.getData().add(series);
+        barChart.setLegendVisible(true);
+    }
+
+
+}
 

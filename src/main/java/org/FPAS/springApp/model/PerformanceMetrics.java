@@ -17,12 +17,11 @@ public class PerformanceMetrics {
     @GeneratedValue
     private long metricsID;
 
-    @ManyToOne
-    @JoinColumn(name = "client_id")
-    private Client client;
-
+    private int client_id;
     private double overallReturn;
+    private double return_2020;
+    private double return_2021;
+    private double return_2022;
+    private double return_2023;
     private double standardDeviation;
-
-    // Add any other necessary fields or methods
 }

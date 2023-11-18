@@ -19,12 +19,8 @@ public class Portfolio {
     private String symbol; //AAPL , TSL
     private int quantity;
     private double purchasePrice;
-    private String purchaseDate;
+    private String purchaseYear;
     private String investmentType;
-    @ManyToOne
-    @JoinColumn(name = "ClientId")
-    private Client uId;
+    private long client_id;
 
-
-    // Add any other necessary fields - Easwar your job
 }
