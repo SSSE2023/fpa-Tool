@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -9,7 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="500.0" prefWidth="755.0" stylesheets="@home.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.FPAS.javaFXApp.controller.InvestmentEntryController">
+<AnchorPane prefHeight="500.0" prefWidth="803.0" stylesheets="@home.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.FPAS.javaFXApp.controller.InvestmentEntryController">
     <children>
         <VBox fx:id="sideMenu" layoutY="77.0" prefHeight="423.0" prefWidth="118.0">
             <children>
@@ -52,7 +54,22 @@
                 </AnchorPane>
             </children>
         </VBox>
-        <AnchorPane fx:id="dashBoard" layoutX="118.0" layoutY="77.0" prefHeight="423.0" prefWidth="637.0" />
+        <AnchorPane fx:id="dashBoard" layoutX="118.0" layoutY="77.0" prefHeight="423.0" prefWidth="637.0">
+         <children>
+            <TableView layoutX="-2.0" layoutY="-1.0" prefHeight="423.0" prefWidth="700.0">
+              <columns>
+                <TableColumn prefWidth="85.0" text="Stock Name" />
+                <TableColumn prefWidth="50.0" text="Type" />
+                  <TableColumn prefWidth="75.0" text="Price 2020" />
+                  <TableColumn prefWidth="70.0" text="Price 2021" />
+                  <TableColumn prefWidth="70.0" text="Price 2022" />
+                  <TableColumn prefWidth="95.0" text="Price 2023 Q1" />
+                  <TableColumn prefWidth="95.0" text="Price 2023 Q2" />
+                  <TableColumn prefWidth="95.0" text="Price 2023 Q3" />
+                  <TableColumn prefWidth="65.0" text="Risk" />
+              </columns>
+            </TableView>
+         </children></AnchorPane>
         <BorderPane fx:id="navBar" prefHeight="77.0" prefWidth="755.0">
             <left>
                 <ImageView fx:id="logo" fitHeight="54.0" fitWidth="221.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
@@ -62,7 +79,7 @@
                 </ImageView>
             </left>
             <right>
-                <AnchorPane prefHeight="77.0" prefWidth="236.0" BorderPane.alignment="CENTER" />
+                <AnchorPane prefHeight="77.0" prefWidth="309.0" BorderPane.alignment="CENTER" />
             </right>
             <center>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">

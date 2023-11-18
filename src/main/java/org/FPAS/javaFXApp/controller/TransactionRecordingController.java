@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import lombok.NoArgsConstructor;
@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 
 import java.awt.*;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import static org.FPAS.javaFXApp.Utils.changeScene;
@@ -29,6 +30,30 @@ public class TransactionRecordingController implements Initializable {
     private Button dashboardButton;
     @FXML
     private Button Sign_out;
+    @FXML
+    private TableColumn<?, Integer> purchasePrice;
+
+    @FXML
+    private TableColumn<?, Date> purchaseDate;
+
+    @FXML
+    private TableColumn<?, Integer> quantity;
+
+    @FXML
+    private TableColumn<?, String> stockName;
+
+    @FXML
+    private TableColumn<?, Float> stockPrice;
+
+    @FXML
+    private TableColumn<?, Integer> transactionId;
+
+    @FXML
+    private TableColumn<?, String> transactionType;
+
+    @FXML
+    private TableView<?> investmentTable;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         investmentsButton.setOnAction(new EventHandler<ActionEvent>() {
