@@ -6,11 +6,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface PerformanceMetricsRepository extends JpaRepository<PerformanceMetrics, Long> {
     @Query("SELECT p FROM PerformanceMetrics p WHERE p.client_id = :clientId")
-    List<Portfolio> findByClientId(@Param("clientId") long clientId);
-
+    List<PerformanceMetrics> findByClientId(@Param("clientId") long clientId);
 }
+
+

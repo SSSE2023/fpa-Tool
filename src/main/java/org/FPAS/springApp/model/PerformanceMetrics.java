@@ -1,11 +1,13 @@
 package org.FPAS.springApp.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 @Entity
 @Data
@@ -15,13 +17,12 @@ import lombok.NoArgsConstructor;
 public class PerformanceMetrics {
     @Id
     @GeneratedValue
-    private long metricsID;
 
-    private int client_id;
-    private double overallReturn;
+    private long metricsid;
+    private long client_id;
     private double return_2020;
     private double return_2021;
     private double return_2022;
     private double return_2023;
-    private double standardDeviation;
+    private double standard_deviation;
 }
