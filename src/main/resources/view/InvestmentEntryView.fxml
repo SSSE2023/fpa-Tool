@@ -56,17 +56,13 @@
         </VBox>
         <AnchorPane fx:id="dashBoard" layoutX="118.0" layoutY="77.0" prefHeight="423.0" prefWidth="637.0">
          <children>
-            <TableView layoutX="-2.0" layoutY="-1.0" prefHeight="493.0" prefWidth="749.0">
+            <TableView fx:id="portfolioTable" layoutX="-2.0" layoutY="-1.0" prefHeight="493.0" prefWidth="749.0">
               <columns>
-                <TableColumn prefWidth="90.0" text="Stock Name" />
-                <TableColumn prefWidth="60.0" text="Type" />
-                  <TableColumn text="Price 2020" />
-                  <TableColumn text="Price 2021" />
-                  <TableColumn text="Price 2022" />
-                  <TableColumn prefWidth="97.0" text="Price 2023 Q1" />
-                  <TableColumn prefWidth="97.0" text="Price 2023 Q2" />
-                  <TableColumn prefWidth="97.0" text="Price 2023 Q3" />
-                  <TableColumn prefWidth="65.0" text="Risk" />
+                  <TableColumn prefWidth="118.0" text="Symbol" />
+                <TableColumn prefWidth="230.0" text="Investment Type" />
+                  <TableColumn prefWidth="109.0" text="Quantity" />
+                  <TableColumn prefWidth="141.0" text="Purchase Price" />
+                  <TableColumn prefWidth="150.0" text="Purchase Year" />
               </columns>
             </TableView>
          </children></AnchorPane>

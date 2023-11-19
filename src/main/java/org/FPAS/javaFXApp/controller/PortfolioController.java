@@ -1,6 +1,5 @@
 package org.FPAS.javaFXApp.controller;
 
-import com.sun.javafx.charts.Legend;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -8,7 +7,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
 import lombok.NoArgsConstructor;
 import org.FPAS.javaFXApp.SharedData;
 import org.FPAS.springApp.model.*;
@@ -37,6 +35,10 @@ public class PortfolioController implements Initializable {
     private Label usernameField;
     @FXML
     private Button sign_out;
+    @FXML
+    private Label riskRatingLabel;
+    @FXML
+    private Label portfolioLabel;
     public static PortfolioRepository portfolioRepository;
     public static BenchmarkRepository benchmarkRepository;
     public static ClientRepository clientRepository;
@@ -76,10 +78,13 @@ public class PortfolioController implements Initializable {
             }
         });
 
-       loadLineChartData();
-        loadBarChartData();
+        String riskRatingSentence = "The portfolio's risk rating has been assessed and currently stands at %d.";
+        riskRatingLabel.setText(String.format(riskRatingSentence, calculateRiskRating()));
+        String portfolioValueSentence = "Total Portfolio Value: $%.2f";
+        portfolioLabel.setText(String.format(portfolioValueSentence, totalPortfolioValue()));
 
-
+        loadLineChartData();
+       loadBarChartData();
         Optional<Client> userOptional = clientRepository.findByUsernameAndPassword(SharedData.getUsername(), SharedData.getPassword());
         userOptional.ifPresent(client -> {
             usernameField.setText(client.getName());
@@ -88,8 +93,8 @@ public class PortfolioController implements Initializable {
 
 
     private void loadLineChartData() {
-        Optional<Client> client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(),SharedData.getPassword());
-        long id= client.get().getuID();
+        Optional<Client> client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(), SharedData.getPassword());
+        long id = client.get().getuID();
         List<PerformanceMetrics> performanceMetricsList = performanceMetricsRepository.findByClientId(id);
         List<Benchmark> benchmark = benchmarkRepository.findAll();
         XYChart.Series<String, Number> series = new XYChart.Series<>();
@@ -101,13 +106,15 @@ public class PortfolioController implements Initializable {
             series.getData().add(new XYChart.Data<>("2022", data.getReturn_2022()));
             series.getData().add(new XYChart.Data<>("2023", data.getReturn_2023()));
         }
-        for(Benchmark data: benchmark){
+
+        for (Benchmark data : benchmark) {
             series2.getData().add(new XYChart.Data<>(Integer.toString(data.getAnnum()), data.getBenchmarkReturn()));
         }
 
         barChart.setLegendVisible(true);
-        lineChart.getData().addAll(series,series2);
+        lineChart.getData().addAll(series, series2);
     }
+
 
     private void loadBarChartData () {
         Optional<Client> client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(),SharedData.getPassword());
@@ -126,6 +133,30 @@ public class PortfolioController implements Initializable {
         barChart.setLegendVisible(false);
     }
 
+    private int calculateRiskRating(){
+        Optional<Client> client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(),SharedData.getPassword());
+        long id= client.get().getuID();
+        List<Portfolio> portfolioDataList = portfolioRepository.findByClientId(id);
+        int riskRating = 0;
+        for (Portfolio data : portfolioDataList) {
+            String symbol = data.getSymbol();
+            List<Investments> investmentsDataList = investmentsRepository.findBySymbol(symbol);
+            for (Investments data2 : investmentsDataList) {
+                riskRating+=data2.getRisk_rating();
+            }
+        }
+        return riskRating;
+    }
+    private double totalPortfolioValue(){
+        Optional<Client> client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(),SharedData.getPassword());
+        long id= client.get().getuID();
+        List<Portfolio> portfolioDataList = portfolioRepository.findByClientId(id);
+        double totalPortfolioValue  = 0;
+        for (Portfolio data : portfolioDataList) {
+            totalPortfolioValue = data.getPurchasePrice() * data.getQuantity();
+        }
+        return totalPortfolioValue;
+    }
 
 }
 

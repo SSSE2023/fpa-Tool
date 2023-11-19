@@ -16,11 +16,12 @@ public class Portfolio {
     @GeneratedValue
     private long investmentID;
     private String name;
-    private String symbol; //AAPL , TSL
+    private String symbol;
     private int quantity;
     private double purchasePrice;
     private String purchaseYear;
     private String investmentType;
     private long client_id;
+
 
 }
