@@ -10,7 +10,8 @@ public class javaFXMain extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(javaFXMain.class.getResource("/view/authenticationView2.fxml"));
-        SpringManager.startSpringApp();
+        SpringManager.
+                startSpringApp();
 
         Scene scene = new Scene(loader.load());
         stage.setTitle("Login Page");

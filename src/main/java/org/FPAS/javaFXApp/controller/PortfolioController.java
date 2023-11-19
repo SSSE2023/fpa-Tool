@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import lombok.NoArgsConstructor;
 import org.FPAS.javaFXApp.SharedData;
+import org.FPAS.springApp.Repository.*;
 import org.FPAS.springApp.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Controller;
 import java.net.URL;
 import java.util.*;
 
-import static org.FPAS.javaFXApp.Utils.changeScene;
+import static org.FPAS.javaFXApp.FXMLHandler.changeScene;
 
 @Controller
 @NoArgsConstructor
@@ -99,6 +100,10 @@ public class PortfolioController implements Initializable {
         List<Benchmark> benchmark = benchmarkRepository.findAll();
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         XYChart.Series<String, Number> series2 = new XYChart.Series<>();
+
+        // Set the name for the series (will be displayed in the legend)
+        series.setName("Client Performance");
+        series2.setName("Benchmark");
 
         for (PerformanceMetrics data : performanceMetricsList) {
             series.getData().add(new XYChart.Data<>("2020", data.getReturn_2020()));

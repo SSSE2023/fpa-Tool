@@ -8,15 +8,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import lombok.NoArgsConstructor;
-import org.FPAS.javaFXApp.Utils;
-import org.FPAS.springApp.model.ClientRepository;
+import org.FPAS.javaFXApp.service.ClientService;
+import org.FPAS.springApp.Repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static org.FPAS.javaFXApp.Utils.changeScene;
+import static org.FPAS.javaFXApp.FXMLHandler.changeScene;
 
 @Controller
 @NoArgsConstructor
@@ -47,7 +47,7 @@ public class signUpController implements Initializable {
             public void handle(ActionEvent event) {
                 if (!sign_username.getText().trim().isEmpty() && !sign_password.getText().trim().isEmpty()
                         && !name.getText().trim().isEmpty() && !Emails.getText().trim().isEmpty()) {
-                    Utils.signUpUser(event, name.getText(), sign_username.getText(), sign_password.getText(), Emails.getText());
+                    ClientService.signUpUser(event, name.getText(), sign_username.getText(), sign_password.getText(), Emails.getText());
                 } else {
                     System.out.println("Invalid Information");
                     Alert alert = new Alert(Alert.AlertType.ERROR);

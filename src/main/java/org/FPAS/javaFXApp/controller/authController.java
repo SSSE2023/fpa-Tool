@@ -9,8 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import lombok.NoArgsConstructor;
 import org.FPAS.javaFXApp.SharedData;
-import org.FPAS.javaFXApp.Utils;
-import org.FPAS.springApp.model.ClientRepository;
+import org.FPAS.javaFXApp.FXMLHandler;
+import org.FPAS.javaFXApp.service.ClientService;
+import org.FPAS.springApp.Repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -43,7 +44,7 @@ public class authController implements Initializable {
             public void handle(ActionEvent event) {
                 if (!login_username.getText().trim().isEmpty() && !login_password.getText().trim().isEmpty()) {
                     SharedData.setCredentials(login_username.getText(), login_password.getText());
-                    Utils.loginUser(event, login_username.getText(), login_password.getText());
+                    ClientService.loginUser(event, login_username.getText(), login_password.getText());
                 }
                 else{
                     System.out.println("Invalid Information");
@@ -57,7 +58,7 @@ public class authController implements Initializable {
         signUpButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Utils.changeScene(event, "signUpView.fxml", null, null, signUpController.class);
+                FXMLHandler.changeScene(event, "signUpView.fxml", null, null, signUpController.class);
             }
         });
     }
