@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.FPAS.springApp.SpringManager;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 
 public class javaFXMain extends Application {
     @Override

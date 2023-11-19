@@ -21,7 +21,9 @@ public class Portfolio {
     private double purchasePrice;
     private String purchaseYear;
     private String investmentType;
-    private long client_id;
 
-
+    @ManyToOne
+    @JoinColumn(name = "client_id", nullable = false)
+    private Client client;
 }
+

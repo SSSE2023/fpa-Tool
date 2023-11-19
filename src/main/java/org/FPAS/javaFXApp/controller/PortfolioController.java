@@ -95,13 +95,11 @@ public class PortfolioController implements Initializable {
 
     private void loadLineChartData() {
         Optional<Client> client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(), SharedData.getPassword());
-        long id = client.get().getuID();
-        List<PerformanceMetrics> performanceMetricsList = performanceMetricsRepository.findByClientId(id);
+        List<PerformanceMetrics> performanceMetricsList = performanceMetricsRepository.findByClient(client.get());
         List<Benchmark> benchmark = benchmarkRepository.findAll();
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         XYChart.Series<String, Number> series2 = new XYChart.Series<>();
 
-        // Set the name for the series (will be displayed in the legend)
         series.setName("Client Performance");
         series2.setName("Benchmark");
 
@@ -116,17 +114,14 @@ public class PortfolioController implements Initializable {
             series2.getData().add(new XYChart.Data<>(Integer.toString(data.getAnnum()), data.getBenchmarkReturn()));
         }
 
-        barChart.setLegendVisible(true);
+        lineChart.setLegendVisible(true);
         lineChart.getData().addAll(series, series2);
     }
 
 
     private void loadBarChartData () {
         Optional<Client> client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(),SharedData.getPassword());
-
-        long id= client.get().getuID();
-
-        List<Portfolio> portfolioDataList = portfolioRepository.findByClientId(id);
+        List<Portfolio> portfolioDataList = portfolioRepository.findByClient(client.get());
 
         XYChart.Series<String, Number> series = new XYChart.Series<>();
 
@@ -140,8 +135,7 @@ public class PortfolioController implements Initializable {
 
     private int calculateRiskRating(){
         Optional<Client> client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(),SharedData.getPassword());
-        long id= client.get().getuID();
-        List<Portfolio> portfolioDataList = portfolioRepository.findByClientId(id);
+        List<Portfolio> portfolioDataList = portfolioRepository.findByClient(client.get());
         int riskRating = 0;
         for (Portfolio data : portfolioDataList) {
             String symbol = data.getSymbol();
@@ -154,8 +148,7 @@ public class PortfolioController implements Initializable {
     }
     private double totalPortfolioValue(){
         Optional<Client> client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(),SharedData.getPassword());
-        long id= client.get().getuID();
-        List<Portfolio> portfolioDataList = portfolioRepository.findByClientId(id);
+        List<Portfolio> portfolioDataList = portfolioRepository.findByClient(client.get());
         double totalPortfolioValue  = 0;
         for (Portfolio data : portfolioDataList) {
             totalPortfolioValue = data.getPurchasePrice() * data.getQuantity();

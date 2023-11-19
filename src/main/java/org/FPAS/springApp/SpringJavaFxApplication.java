@@ -1,22 +1,13 @@
 package org.FPAS.springApp;
 
-import org.FPAS.springApp.Repository.ClientRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "org.FPAS")
-
+@ComponentScan(basePackages = {"org.FPAS", "org.FPAS.javaFXApp"})
 public class SpringJavaFxApplication {
-
     public static void main(String[] args) {
-        SpringApplication.run(SpringJavaFxApplication.class, "");
+        SpringApplication.run(SpringJavaFxApplication.class, args);
     }
-
-    @Autowired
-    ClientRepository userRepository;
-
-
 }

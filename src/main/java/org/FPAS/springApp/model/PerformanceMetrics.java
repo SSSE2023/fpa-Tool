@@ -1,9 +1,6 @@
 package org.FPAS.springApp.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,4 +22,7 @@ public class PerformanceMetrics {
     private double return_2022;
     private double return_2023;
     private double standard_deviation;
+    @ManyToOne
+    private Client client;
+
 }

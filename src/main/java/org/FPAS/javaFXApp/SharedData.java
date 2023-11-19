@@ -1,16 +1,12 @@
 package org.FPAS.javaFXApp;
 
+import lombok.Getter;
+
 public class SharedData {
+    @Getter
     private static String username;
+    @Getter
     private static String password;
-
-    public static String getUsername() {
-        return username;
-    }
-
-    public static String getPassword() {
-        return password;
-    }
 
     public static void setCredentials(String newUsername, String newPassword) {
         username = newUsername;
