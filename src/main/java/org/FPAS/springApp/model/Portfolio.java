@@ -16,15 +16,14 @@ public class Portfolio {
     @GeneratedValue
     private long investmentID;
     private String name;
-    private String symbol; //AAPL , TSL
+    private String symbol;
     private int quantity;
     private double purchasePrice;
-    private String purchaseDate;
+    private String purchaseYear;
     private String investmentType;
+
     @ManyToOne
-    @JoinColumn(name = "ClientId")
-    private Client uId;
-
-
-    // Add any other necessary fields - Easwar your job
+    @JoinColumn(name = "client_id", nullable = false)
+    private Client client;
 }
+

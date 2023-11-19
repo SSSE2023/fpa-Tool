@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Entity
 @Data
 @AllArgsConstructor
@@ -15,14 +14,15 @@ import lombok.NoArgsConstructor;
 public class PerformanceMetrics {
     @Id
     @GeneratedValue
-    private long metricsID;
 
+    private long metricsid;
+    private long client_id;
+    private double return_2020;
+    private double return_2021;
+    private double return_2022;
+    private double return_2023;
+    private double standard_deviation;
     @ManyToOne
-    @JoinColumn(name = "client_id")
     private Client client;
 
-    private double overallReturn;
-    private double standardDeviation;
-
-    // Add any other necessary fields or methods
 }
