@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import lombok.NoArgsConstructor;
 import org.FPAS.javaFXApp.SharedData;
+import org.FPAS.javaFXApp.service.PortfolioService;
 import org.FPAS.springApp.Repository.*;
 import org.FPAS.springApp.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,14 +46,17 @@ public class PortfolioController implements Initializable {
     public static ClientRepository clientRepository;
     public static InvestmentsRepository investmentsRepository;
     public static PerformanceMetricsRepository performanceMetricsRepository;
+    private static PortfolioService portfolioService;
+
 
     @Autowired
-    public PortfolioController( ClientRepository clientRepository, PortfolioRepository portfolioRepository, BenchmarkRepository benchmarkRepository, InvestmentsRepository investmentsRepository,PerformanceMetricsRepository performanceMetricsRepository) {
+    public PortfolioController( ClientRepository clientRepository, PortfolioRepository portfolioRepository, BenchmarkRepository benchmarkRepository, InvestmentsRepository investmentsRepository,PerformanceMetricsRepository performanceMetricsRepository, PortfolioService portfolioService) {
         PortfolioController.clientRepository = clientRepository;
         PortfolioController.benchmarkRepository = benchmarkRepository;
         PortfolioController.portfolioRepository = portfolioRepository;
         PortfolioController.investmentsRepository = investmentsRepository;
         PortfolioController.performanceMetricsRepository = performanceMetricsRepository;
+        PortfolioController.portfolioService = portfolioService;
     }
 
 
@@ -79,84 +83,29 @@ public class PortfolioController implements Initializable {
             }
         });
 
-        String riskRatingSentence = "The portfolio's risk rating has been assessed and currently stands at %d.";
-        riskRatingLabel.setText(String.format(riskRatingSentence, calculateRiskRating()));
-        String portfolioValueSentence = "Total Portfolio Value: $%.2f";
-        portfolioLabel.setText(String.format(portfolioValueSentence, totalPortfolioValue()));
-
         loadLineChartData();
-       loadBarChartData();
+        loadBarChartData();
+
+        int riskRating = portfolioService.calculateRiskRating();
+        double totalPortfolioValue = portfolioService.totalPortfolioValue();
+
+        String riskRatingSentence = "The portfolio's risk rating has been assessed and currently stands at %d.";
+        riskRatingLabel.setText(String.format(riskRatingSentence, riskRating));
+
+        String portfolioValueSentence = "Total Portfolio Value: $%.2f";
+        portfolioLabel.setText(String.format(portfolioValueSentence, totalPortfolioValue));
+
         Optional<Client> userOptional = clientRepository.findByUsernameAndPassword(SharedData.getUsername(), SharedData.getPassword());
         userOptional.ifPresent(client -> {
             usernameField.setText(client.getName());
         });
     }
 
-
     private void loadLineChartData() {
-        Optional<Client> client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(), SharedData.getPassword());
-        List<PerformanceMetrics> performanceMetricsList = performanceMetricsRepository.findByClient(client.get());
-        List<Benchmark> benchmark = benchmarkRepository.findAll();
-
-        XYChart.Series<String, Number> series = new XYChart.Series<>();
-        XYChart.Series<String, Number> series2 = new XYChart.Series<>();
-
-        series.setName("Client Performance");
-        series2.setName("Benchmark");
-
-        for (PerformanceMetrics data : performanceMetricsList) {
-            series.getData().add(new XYChart.Data<>("2020", data.getReturn_2020()));
-            series.getData().add(new XYChart.Data<>("2021", data.getReturn_2021()));
-            series.getData().add(new XYChart.Data<>("2022", data.getReturn_2022()));
-            series.getData().add(new XYChart.Data<>("2023", data.getReturn_2023()));
-        }
-
-        for (Benchmark data : benchmark) {
-            series2.getData().add(new XYChart.Data<>(Integer.toString(data.getAnnum()), data.getBenchmarkReturn()));
-        }
-
-        lineChart.setLegendVisible(true);
-        lineChart.getData().addAll(series, series2);
+        portfolioService.loadLineChartData(lineChart);
     }
 
-
-
-    private void loadBarChartData () {
-        Optional<Client> client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(),SharedData.getPassword());
-        List<Portfolio> portfolioDataList = portfolioRepository.findByClient(client.get());
-
-        XYChart.Series<String, Number> series = new XYChart.Series<>();
-
-        for (Portfolio data : portfolioDataList) {
-            series.getData().add(new XYChart.Data<>(data.getSymbol(), data.getPurchasePrice() * data.getQuantity()));
-        }
-        barChart.getData().clear();
-        barChart.getData().add(series);
-        barChart.setLegendVisible(false);
+    private void loadBarChartData() {
+        portfolioService.loadBarChartData(barChart);
     }
-
-    private int calculateRiskRating(){
-        Optional<Client> client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(),SharedData.getPassword());
-        List<Portfolio> portfolioDataList = portfolioRepository.findByClient(client.get());
-        int riskRating = 0;
-        for (Portfolio data : portfolioDataList) {
-            String symbol = data.getSymbol();
-            List<Investments> investmentsDataList = investmentsRepository.findBySymbol(symbol);
-            for (Investments data2 : investmentsDataList) {
-                riskRating+=data2.getRisk_rating();
-            }
-        }
-        return riskRating;
-    }
-    private double totalPortfolioValue(){
-        Optional<Client> client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(),SharedData.getPassword());
-        List<Portfolio> portfolioDataList = portfolioRepository.findByClient(client.get());
-        double totalPortfolioValue  = 0;
-        for (Portfolio data : portfolioDataList) {
-            totalPortfolioValue = data.getPurchasePrice() * data.getQuantity();
-        }
-        return totalPortfolioValue;
-    }
-
 }
-
