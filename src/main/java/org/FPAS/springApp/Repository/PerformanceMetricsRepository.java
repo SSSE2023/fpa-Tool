@@ -1,5 +1,6 @@
-package org.FPAS.springApp.model;
+package org.FPAS.springApp.Repository;
 
+import org.FPAS.springApp.model.PerformanceMetrics;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

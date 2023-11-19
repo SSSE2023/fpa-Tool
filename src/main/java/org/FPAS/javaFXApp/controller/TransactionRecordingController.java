@@ -6,19 +6,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import lombok.NoArgsConstructor;
-import org.FPAS.javaFXApp.Utils;
-import org.FPAS.springApp.model.ClientRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.FPAS.javaFXApp.FXMLHandler;
 import org.springframework.stereotype.Controller;
 
-import java.awt.*;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-import static org.FPAS.javaFXApp.Utils.changeScene;
+import static org.FPAS.javaFXApp.FXMLHandler.changeScene;
 
 @Controller
 @NoArgsConstructor
@@ -59,13 +55,13 @@ public class TransactionRecordingController implements Initializable {
         investmentsButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Utils.changeScene(event, "InvestmentEntryView.fxml", null, null, InvestmentEntryController.class);
+                FXMLHandler.changeScene(event, "InvestmentEntryView.fxml", null, null, InvestmentEntryController.class);
             }
         });
         dashboardButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Utils.changeScene(event, "PortfolioView.fxml", null, null, PortfolioController.class);
+                FXMLHandler.changeScene(event, "PortfolioView.fxml", null, null, PortfolioController.class);
             }
         });
         Sign_out.setOnAction(new EventHandler<ActionEvent>() {
