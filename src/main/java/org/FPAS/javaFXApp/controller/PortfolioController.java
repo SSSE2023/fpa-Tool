@@ -97,6 +97,7 @@ public class PortfolioController implements Initializable {
         Optional<Client> client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(), SharedData.getPassword());
         List<PerformanceMetrics> performanceMetricsList = performanceMetricsRepository.findByClient(client.get());
         List<Benchmark> benchmark = benchmarkRepository.findAll();
+
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         XYChart.Series<String, Number> series2 = new XYChart.Series<>();
 
@@ -117,6 +118,7 @@ public class PortfolioController implements Initializable {
         lineChart.setLegendVisible(true);
         lineChart.getData().addAll(series, series2);
     }
+
 
 
     private void loadBarChartData () {
