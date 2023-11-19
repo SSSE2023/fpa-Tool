@@ -27,9 +27,6 @@ public class PortfolioService {
     @Autowired
     private InvestmentsRepository investmentsRepository;
 
-    public List<Portfolio> getPortfoliosByClient(Client client) {
-        return portfolioRepository.findByClient(client);
-    }
 
     public void loadLineChartData(XYChart<String, Number> lineChart) {
         Optional<Client> client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(), SharedData.getPassword());
