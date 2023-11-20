@@ -98,7 +98,7 @@ public class PortfolioController implements Initializable {
         String riskRatingSentence = "The portfolio's risk rating currently stands at %d.";
         riskRatingLabel.setText(String.format(riskRatingSentence, riskRating));
 
-        String portfolioValueSentence = "Total Portfolio Value: $%.2f";
+        String portfolioValueSentence = "$%.2f";
         portfolioLabel.setText(String.format(portfolioValueSentence, totalPortfolioValue));
 
         Optional<Client> userOptional = clientRepository.findByUsernameAndPassword(SharedData.getUsername(), SharedData.getPassword());

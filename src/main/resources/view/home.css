@@ -13,6 +13,9 @@
 
 
 }
+#innerAnchor{
+
+}
 
 #sideMenu {
     -fx-background-color: #232D3F;
@@ -78,6 +81,14 @@
 .chart-axis-label {
     -fx-padding: 5 0 0 0; /* Adjust padding for the x-axis labels */
 }
+#pieChartCircle{
+   -fx-fill: #D8D9DA;
+    -fx-stroke: transparent;
+}
+#portfolioLabel{
+    -fx-text-fill: black;
+}
+
 
 #searchBar {
     -fx-background-radius: 60 0 0 60;
@@ -98,6 +109,7 @@
     -fx-font-family: Inter;
     -fx-text-fill: #FFFFFF; /* Change this to black */
     -fx-font-size: 16px;
+    -fx-font-weight: bold;
 }
 
 .table-view {

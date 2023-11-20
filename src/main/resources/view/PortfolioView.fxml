@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -80,18 +81,24 @@
                 </BarChart>
                 <Text layoutX="489.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Portfolio Value (Year)" />
                 <Text layoutX="169.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Assets" />
-            <Label fx:id="riskRatingLabel" layoutX="328.0" layoutY="335.0" prefHeight="54.0" prefWidth="384.0" textAlignment="CENTER">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Label>
-            <Label fx:id="portfolioLabel" layoutX="70.0" layoutY="459.0" prefHeight="30.0" prefWidth="282.0" textAlignment="CENTER">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Label>
-            <PieChart fx:id="pieChart" layoutX="28.0" layoutY="248.0" prefHeight="228.0" prefWidth="298.0" />
-            <Text layoutX="135.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Portofolio Value" />
+            <AnchorPane fx:id="innerAnchor" layoutX="8.0" layoutY="261.0" prefHeight="228.0" prefWidth="735.0">
+               <children>
+                  <Label fx:id="riskRatingLabel" layoutX="339.0" layoutY="48.0" prefHeight="54.0" prefWidth="384.0" textAlignment="CENTER">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <PieChart fx:id="pieChart" layoutX="35.0" layoutY="-10.0" prefHeight="228.0" prefWidth="298.0" />
+                  <Circle fx:id="pieChartCircle" fill="DODGERBLUE" layoutX="184.0" layoutY="104.0" radius="65.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="portfolioLabel" layoutX="146.0" layoutY="89.0" prefHeight="30.0" prefWidth="85.0" textAlignment="CENTER">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Text layoutX="141.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Net Worth" wrappingWidth="97.470703125" />
+               </children>
+            </AnchorPane>
+            <Text layoutX="150.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Portofolio Value" />
             </children>
         </AnchorPane>
         <BorderPane fx:id="navBar" prefHeight="77.0" prefWidth="755.0">
