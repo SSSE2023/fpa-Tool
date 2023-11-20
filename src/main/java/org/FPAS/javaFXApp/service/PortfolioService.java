@@ -87,17 +87,24 @@ public class PortfolioService {
 
     }
 
-    public int calculateRiskRating() {
+    public double calculateRiskRating() {
         Optional<Client> client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(), SharedData.getPassword());
         List<Portfolio> portfolioDataList = portfolioRepository.findByClient(client.get());
-        int riskRating = 0;
+        double riskRating = 0;
+        int totalElements = 0;
         for (Portfolio data : portfolioDataList) {
             String symbol = data.getSymbol();
             List<Investments> investmentsDataList = investmentsRepository.findBySymbol(symbol);
             for (Investments data2 : investmentsDataList) {
                 riskRating += data2.getRisk_rating();
+                totalElements++;
             }
         }
+        if (totalElements == 0) {
+            return 0;
+        }
+        riskRating = riskRating/totalElements ;
+
         return riskRating;
     }
 

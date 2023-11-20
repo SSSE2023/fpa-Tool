@@ -92,10 +92,10 @@ public class PortfolioController implements Initializable {
         loadBarChartData();
         loadPieChartData();
 
-        int riskRating = portfolioService.calculateRiskRating();
+        double riskRating = portfolioService.calculateRiskRating();
         double totalPortfolioValue = portfolioService.totalPortfolioValue();
 
-        String riskRatingSentence = "The portfolio's risk rating currently stands at %d.";
+        String riskRatingSentence = "The portfolio's risk rating currently stands at %.2f.";
         riskRatingLabel.setText(String.format(riskRatingSentence, riskRating));
 
         String portfolioValueSentence = "$%.2f";
