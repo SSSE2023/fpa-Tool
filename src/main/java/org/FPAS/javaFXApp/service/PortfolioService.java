@@ -1,5 +1,6 @@
 package org.FPAS.javaFXApp.service;
 
+import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import org.FPAS.javaFXApp.SharedData;
 import org.FPAS.springApp.Repository.*;
@@ -7,6 +8,7 @@ import org.FPAS.springApp.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.*;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,6 +67,24 @@ public class PortfolioService {
         barChart.getData().clear();
         barChart.getData().add(series);
         barChart.setLegendVisible(false);
+    }
+    public void loadPieChartData(PieChart pieChart) {
+        Optional<Client> client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(), SharedData.getPassword());
+        List<Portfolio> portfolioDataList = portfolioRepository.findByClient(client.get());
+
+        PieChart.Data[] data = new PieChart.Data[portfolioDataList.size()];
+
+        double totalValue = 0;
+
+        for (int i = 0; i < portfolioDataList.size(); i++) {
+            Portfolio portfolio = portfolioDataList.get(i);
+            data[i] = new PieChart.Data(portfolio.getSymbol(), portfolio.getPurchasePrice() * portfolio.getQuantity());
+            totalValue += data[i].getPieValue();
+        }
+
+        pieChart.getData().setAll(data);
+        pieChart.setLegendVisible(false);
+
     }
 
     public int calculateRiskRating() {
