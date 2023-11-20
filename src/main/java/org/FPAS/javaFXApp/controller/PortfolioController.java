@@ -41,6 +41,11 @@ public class PortfolioController implements Initializable {
     private Label riskRatingLabel;
     @FXML
     private Label portfolioLabel;
+    @FXML
+    private PieChart pieChart;
+    @FXML
+    private Label sumLabel;
+
     public static PortfolioRepository portfolioRepository;
     public static BenchmarkRepository benchmarkRepository;
     public static ClientRepository clientRepository;
@@ -85,11 +90,12 @@ public class PortfolioController implements Initializable {
 
         loadLineChartData();
         loadBarChartData();
+        loadPieChartData();
 
         int riskRating = portfolioService.calculateRiskRating();
         double totalPortfolioValue = portfolioService.totalPortfolioValue();
 
-        String riskRatingSentence = "The portfolio's risk rating has been assessed and currently stands at %d.";
+        String riskRatingSentence = "The portfolio's risk rating currently stands at %d.";
         riskRatingLabel.setText(String.format(riskRatingSentence, riskRating));
 
         String portfolioValueSentence = "Total Portfolio Value: $%.2f";
@@ -108,4 +114,5 @@ public class PortfolioController implements Initializable {
     private void loadBarChartData() {
         portfolioService.loadBarChartData(barChart);
     }
+    private void loadPieChartData(){portfolioService.loadPieChartData(pieChart);}
 }

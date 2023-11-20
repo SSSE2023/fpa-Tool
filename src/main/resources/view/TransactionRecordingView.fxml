@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="571.0" prefWidth="818.0" stylesheets="@home.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.FPAS.javaFXApp.controller.TransactionRecordingController">
+<AnchorPane prefHeight="570.0" prefWidth="865.0" stylesheets="@home.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.FPAS.javaFXApp.controller.TransactionRecordingController">
     <children>
         <VBox fx:id="sideMenu" layoutY="77.0" prefHeight="494.0" prefWidth="118.0">
             <children>
@@ -57,15 +57,15 @@
         </VBox>
         <AnchorPane fx:id="dashBoard" layoutX="118.0" layoutY="77.0" prefHeight="423.0" prefWidth="637.0">
          <children>
-            <TableView fx:id="investmentTable" layoutY="-1.0" prefHeight="493.0" prefWidth="701.0">
+            <TableView fx:id="investmentTable" layoutY="-1.0" prefHeight="493.0" prefWidth="746.0">
               <columns>
-                <TableColumn fx:id="transactionA" prefWidth="194.0" text="Transaction Amount" />
-                  <TableColumn fx:id="transactionT" prefWidth="304.0" text="Transaction Type" />
-                  <TableColumn fx:id="type" prefWidth="202.0" text="Type" />
+                  <TableColumn fx:id="type" prefWidth="247.0" text="Type" />
+                <TableColumn fx:id="transactionA" prefWidth="247.0" text="Transaction Amount" />
+                  <TableColumn fx:id="transactionT" prefWidth="247.0" text="Transaction Year" />
               </columns>
             </TableView>
          </children></AnchorPane>
-        <BorderPane fx:id="navBar" prefHeight="77.0" prefWidth="819.0">
+        <BorderPane fx:id="navBar" prefHeight="77.0" prefWidth="865.0">
             <left>
                 <ImageView fx:id="logo" fitHeight="54.0" fitWidth="221.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                     <image>
