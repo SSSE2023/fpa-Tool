@@ -87,8 +87,12 @@
 }
 #portfolioLabel{
     -fx-text-fill: black;
+    -fx-font-weight: bold;
 }
+#totalNetWorth{
+    -fx-font-weight: bold;
 
+}
 
 #searchBar {
     -fx-background-radius: 60 0 0 60;
@@ -114,8 +118,15 @@
 
 .table-view {
     -fx-background-color: #D8D9DA;
+}
 
+/* Style the plot area (where bars are drawn) */
+.chart-plot-background {
+    -fx-background-color: #ffffff; /* Set the plot background color */
+}
 
+.series0{
+    -fx-bar-fill: #1f77b4;
 }
 
 .column-header {

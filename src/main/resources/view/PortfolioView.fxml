@@ -90,15 +90,15 @@
                   </Label>
                   <PieChart fx:id="pieChart" layoutX="35.0" layoutY="-10.0" prefHeight="228.0" prefWidth="298.0" />
                   <Circle fx:id="pieChartCircle" fill="DODGERBLUE" layoutX="184.0" layoutY="104.0" radius="65.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Label fx:id="portfolioLabel" layoutX="146.0" layoutY="89.0" prefHeight="30.0" prefWidth="85.0" textAlignment="CENTER">
+                  <Label fx:id="portfolioLabel" layoutX="144.0" layoutY="89.0" prefHeight="30.0" prefWidth="85.0" textAlignment="CENTER">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <Text layoutX="141.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Net Worth" wrappingWidth="97.470703125" />
+                  <Text fx:id="totalNetWorth" layoutX="139.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Net Worth" wrappingWidth="97.470703125" />
                </children>
             </AnchorPane>
-            <Text layoutX="150.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Portofolio Value" />
+            <Text layoutX="148.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Portofolio Value" />
             </children>
         </AnchorPane>
         <BorderPane fx:id="navBar" prefHeight="77.0" prefWidth="755.0">
