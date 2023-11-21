@@ -2,6 +2,8 @@ package org.FPAS.javaFXApp.service;
 
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.FPAS.javaFXApp.SharedData;
 import org.FPAS.springApp.Repository.*;
 import org.FPAS.springApp.model.*;
@@ -11,7 +13,8 @@ import org.springframework.stereotype.Service;
 import java.awt.*;
 import java.util.List;
 import java.util.Optional;
-
+@AllArgsConstructor
+@NoArgsConstructor
 @Service
 public class PortfolioService {
 
