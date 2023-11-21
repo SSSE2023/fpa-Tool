@@ -12,9 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class Investments {
-
     @Id
-    private String symbol; //AAPL , TSL
+    private String symbol;
     private String name;
     private String investmentType;
     private int price_2022;
@@ -24,8 +23,4 @@ public class Investments {
     private int price_2023_Q2;
     private int price_2023_Q3;
     private int risk_rating;
-
-
-
-    // Add any other necessary fields - Easwar your job
 }

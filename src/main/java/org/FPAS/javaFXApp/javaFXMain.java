@@ -5,12 +5,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.FPAS.springApp.SpringManager;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 
 public class javaFXMain extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(javaFXMain.class.getResource("/view/authenticationView2.fxml"));
-        SpringManager.startSpringApp();
+        SpringManager.
+                startSpringApp();
 
         Scene scene = new Scene(loader.load());
         stage.setTitle("Login Page");

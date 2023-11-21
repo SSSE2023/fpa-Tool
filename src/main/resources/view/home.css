@@ -1,56 +1,74 @@
-*{
+* {
     -fx-font-family: Inter;
-    -fx-text-fill: #FFF6E0;
+    -fx-text-fill: black;
+
 }
 
-#navBar{
+#navBar {
     -fx-background-color: #232D3F;
 }
-#dashBoard{
+
+#dashBoard {
     -fx-background-color: #D8D9DA;
+
+
 }
-#sideMenu{
-    -fx-background-color: #D8D9DA;
+#innerAnchor{
+
+}
+
+#sideMenu {
     -fx-background-color: #232D3F;
 }
-.buttons{
+
+.buttons {
     -fx-border-radius: 30;
     -fx-background-radius: 30;
     -fx-font-size: 11px;
     -fx-border-color: #FFFFFF;
     -fx-border-width: 3px;
     -fx-background-color: #232D3F;
+    -fx-text-fill: #FFFFFF;
 }
-.buttons:hover{
+
+.buttons:hover {
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 10, 0, 0, 1);
     -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;
     -fx-font-size: 11px;
+
 }
-.buttons-new{
+
+.buttons-new {
     -fx-border-radius: 30;
     -fx-background-radius: 30;
     -fx-font-size: 11px;
     -fx-border-width: 3px;
     -fx-background-color: #232D3F;
+    -fx-text-fill: #FFFFFF;
 }
-.buttons-new:hover{
+
+.buttons-new:hover {
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 10, 0, 0, 1);
     -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;
     -fx-font-size: 11px;
     -fx-background-color: #323B4F;
-
 }
-#logo{
+
+#logo {
     -fx-translate-x: 12px;
 }
-#logo:hover{
+
+#logo:hover {
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 1);
     -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;
-
 }
+.chart-legend {
+    -fx-text-fill: black; /* Set the text color to a specific color */
+}
+
 .chart-horizontal-grid-lines {
     -fx-stroke: transparent;
 }
@@ -59,26 +77,68 @@
 .chart-vertical-grid-lines {
     -fx-stroke: transparent;
 }
+
 .chart-axis-label {
     -fx-padding: 5 0 0 0; /* Adjust padding for the x-axis labels */
 }
-#searchBar{
+#pieChartCircle{
+   -fx-fill: #D8D9DA;
+    -fx-stroke: transparent;
+}
+#portfolioLabel{
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+#totalNetWorth{
+    -fx-font-weight: bold;
+
+}
+
+#searchBar {
     -fx-background-radius: 60 0 0 60;
     -fx-background-color: #D8D9DA;
-    -fx-text-fill: #000000;
-
+    -fx-text-fill: black;
 }
-#searchBarButton{
+
+#searchBarButton {
     -fx-background-radius: 0 60 60 0;
     -fx-background-color: #CCCCCC;
-
 }
+
 #searchBarButton:hover {
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 10, 0, 0, 1);
 }
-#usernameField{
+
+#usernameField {
     -fx-font-family: Inter;
-        -fx-text-fill: #FFF6E0;
+    -fx-text-fill: #FFFFFF; /* Change this to black */
     -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.table-view {
+    -fx-background-color: #D8D9DA;
+}
+
+/* Style the plot area (where bars are drawn) */
+.chart-plot-background {
+    -fx-background-color: #ffffff; /* Set the plot background color */
+}
+
+.series0{
+    -fx-bar-fill: #1f77b4;
+}
+
+.column-header {
+
+}
+.table-cell{
+    -fx-text-fill: black;
+}
+.table-row-cell:hover {
+    -fx-background-color: #e0e0e0;
+}
+
+.table-row-cell:selected {
 
 }

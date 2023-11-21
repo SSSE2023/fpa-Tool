@@ -5,7 +5,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import org.FPAS.javaFXApp.Utils;
+import org.FPAS.javaFXApp.FXMLHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -20,11 +20,11 @@ public class mainController implements Initializable {
     @FXML
     private Button signUpButton;
 
-    private final Utils utils;
+    private final FXMLHandler FXMLHandler;
 
     @Autowired
-    public mainController(Utils utils) {
-        this.utils = utils;
+    public mainController(FXMLHandler FXMLHandler) {
+        this.FXMLHandler = FXMLHandler;
     }
 
     @Override
@@ -32,7 +32,7 @@ public class mainController implements Initializable {
         signUpButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                utils.changeScene(event, "signUpView.fxml", null, null, signUpController.class);
+                FXMLHandler.changeScene(event, "signUpView.fxml", null, null, signUpController.class);
             }
         });
     }
