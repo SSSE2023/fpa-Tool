@@ -22,8 +22,12 @@ public class FXMLHandler {
         return FXMLHandler.class.getResource(fxmlFile);
     }
     public static void changeScene(ActionEvent event, String fxmlFile, String username, String password, Class<?> controllerClass) {
-
         try {
+            if (event == null || event.getSource() == null) {
+                System.err.println("Invalid ActionEvent or source is null");
+                return;
+            }
+
             String path = "/view/" + fxmlFile;
             URL resourceUrl = FXMLHandler.class.getResource(path);
 
@@ -45,7 +49,6 @@ public class FXMLHandler {
             stage.show();
         } catch (IOException e) {
             System.err.println("Error loading FXML file: " + e.getMessage());
-            e.printStackTrace();
             throw new RuntimeException(e);
         }
     }
