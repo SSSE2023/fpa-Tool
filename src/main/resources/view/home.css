@@ -126,7 +126,7 @@
 }
 
 .series0{
-    -fx-bar-fill: #1f77b4;
+    /*-fx-bar-fill: #1f77b4;*/
 }
 
 .column-header {
