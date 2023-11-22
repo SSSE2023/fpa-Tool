@@ -12,7 +12,7 @@ import java.util.Optional;
 
 import static org.mockito.Mockito.*;
 
-class ClientServiceTest {
+public class ClientServiceTest {
 
     @Test
     void testSignUpUser_Successful() {
