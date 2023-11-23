@@ -17,27 +17,32 @@ public class mainController implements Initializable {
 
     @FXML
     private Button loginButton;
+
     @FXML
     public Button signUpButton;
 
-    private final FXMLHandler FXMLHandler;
+    private final FXMLHandler fxmlHandler;
 
     @Autowired
-    public mainController(FXMLHandler FXMLHandler) {
-        this.FXMLHandler = FXMLHandler;
+    public mainController(FXMLHandler fxmlHandler) {
+        this.fxmlHandler = fxmlHandler;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        signUpButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                FXMLHandler.changeScene(event, "signUpView.fxml", null, null, signUpController.class);
-            }
-        });
+        if (signUpButton != null) {
+            signUpButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    fxmlHandler.changeScene(event, "signUpView.fxml", null, null, signUpController.class);
+                }
+            });
+        } else {
+            System.err.println("signUpButton is null in initialize method.");
+        }
     }
 
-    public void setUserInformation(String username) {
+    public static void setUserInformation(String username) {
         System.out.println(username);
     }
 }
