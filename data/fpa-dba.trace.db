@@ -3694,3 +3694,356 @@ DROP COLUMN TRANSACTION_DATE [42122-214]
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
+2023-11-22 19:02:26 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "INFLATIONBENCHMARK" already exists; SQL statement:
+CREATE TABLE InflationBenchmark (
+    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    benchmark_Return DOUBLE,
+    annum INT
+) [42101-214]
+2023-11-22 19:02:53 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "Drop Table InflationBenchmark [*]if exist \000d\000aCREATE TABLE InflationBenchmark (\000d\000a    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,\000d\000a    name VARCHAR(255),\000d\000a    benchmark_Return DOUBLE,\000d\000a    annum INT\000d\000a)"; SQL statement:
+Drop Table InflationBenchmark if exist 
+CREATE TABLE InflationBenchmark (
+    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    benchmark_Return DOUBLE,
+    annum INT
+) [42000-214]
+2023-11-22 19:03:03 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "Drop Table InflationBenchmark \000d\000a[*]CREATE TABLE InflationBenchmark (\000d\000a    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,\000d\000a    name VARCHAR(255),\000d\000a    benchmark_Return DOUBLE,\000d\000a    annum INT\000d\000a)"; SQL statement:
+Drop Table InflationBenchmark 
+CREATE TABLE InflationBenchmark (
+    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    benchmark_Return DOUBLE,
+    annum INT
+) [42000-214]
+2023-11-22 19:04:03 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "Drop Table [*]If exist InflationBenchmark \000d\000aCREATE TABLE InflationBenchmark (\000d\000a    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,\000d\000a    name VARCHAR(255),\000d\000a    benchmark_Return DOUBLE,\000d\000a    annum INT\000d\000a)"; expected "identifier"; SQL statement:
+Drop Table If exist InflationBenchmark 
+CREATE TABLE InflationBenchmark (
+    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    benchmark_Return DOUBLE,
+    annum INT
+) [42001-214]
+2023-11-22 19:05:11 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "INFLATIONBENCHMARK" already exists; SQL statement:
+CREATE TABLE InflationBenchmark (
+    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    benchmark_Return DOUBLE,
+    annum INT
+) [42101-214]
+2023-11-22 19:05:21 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "Drop  [*]INFLATIONBENCHMARK"; expected "TABLE, INDEX, USER, SEQUENCE, CONSTANT, TRIGGER, VIEW, ROLE, ALIAS, SCHEMA, ALL OBJECTS, DOMAIN, TYPE, DATATYPE, AGGREGATE, SYNONYM"; SQL statement:
+Drop  INFLATIONBENCHMARK [42001-214]
+2023-11-22 19:05:34 jdbc[15]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-214]
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:190)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:132)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:288)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:808)
+	at org.h2.server.web.WebApp.login(WebApp.java:1033)
+	at org.h2.server.web.WebApp.process(WebApp.java:226)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:176)
+	at org.h2.server.web.JakartaWebServlet.doGet(JakartaWebServlet.java:129)
+	at org.h2.server.web.JakartaWebServlet.doPost(JakartaWebServlet.java:166)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:678)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	... 47 more
+2023-11-22 19:06:04 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "INFLATION_BENCHMARK" already exists; SQL statement:
+CREATE TABLE Inflation_Benchmark (
+    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    benchmark_Return DOUBLE,
+    annum INT
+) [42101-214]
+2023-11-22 19:06:33 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "Drop Table Inflation_Benchmark \000d\000a[*]CREATE TABLE Inflation_Benchmark (\000d\000a    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,\000d\000a    name VARCHAR(255),\000d\000a    benchmark_Return DOUBLE,\000d\000a    annum INT\000d\000a)"; SQL statement:
+Drop Table Inflation_Benchmark 
+CREATE TABLE Inflation_Benchmark (
+    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    benchmark_Return DOUBLE,
+    annum INT
+) [42000-214]
+2023-11-22 19:06:56 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "Drop Table INFLATION_BENCHMARK\000d\000a[*]CREATE TABLE Inflation_Benchmark (\000d\000a    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,\000d\000a    name VARCHAR(255),\000d\000a    benchmark_Return DOUBLE,\000d\000a    annum INT\000d\000a)"; SQL statement:
+Drop Table INFLATION_BENCHMARK
+CREATE TABLE Inflation_Benchmark (
+    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    benchmark_Return DOUBLE,
+    annum INT
+) [42000-214]
+2023-11-22 19:07:05 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "Drop Table If exists INFLATION_BENCHMARK\000d\000a[*]CREATE TABLE Inflation_Benchmark (\000d\000a    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,\000d\000a    name VARCHAR(255),\000d\000a    benchmark_Return DOUBLE,\000d\000a    annum INT\000d\000a)"; SQL statement:
+Drop Table If exists INFLATION_BENCHMARK
+CREATE TABLE Inflation_Benchmark (
+    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    benchmark_Return DOUBLE,
+    annum INT
+) [42000-214]
+2023-11-22 19:07:06 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "Drop Table If exists INFLATION_BENCHMARK\000d\000a[*]CREATE TABLE Inflation_Benchmark (\000d\000a    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,\000d\000a    name VARCHAR(255),\000d\000a    benchmark_Return DOUBLE,\000d\000a    annum INT\000d\000a)"; SQL statement:
+Drop Table If exists INFLATION_BENCHMARK
+CREATE TABLE Inflation_Benchmark (
+    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    benchmark_Return DOUBLE,
+    annum INT
+) [42000-214]
+2023-11-22 19:07:06 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "Drop Table If exists INFLATION_BENCHMARK\000d\000a[*]CREATE TABLE Inflation_Benchmark (\000d\000a    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,\000d\000a    name VARCHAR(255),\000d\000a    benchmark_Return DOUBLE,\000d\000a    annum INT\000d\000a)"; SQL statement:
+Drop Table If exists INFLATION_BENCHMARK
+CREATE TABLE Inflation_Benchmark (
+    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    benchmark_Return DOUBLE,
+    annum INT
+) [42000-214]
+2023-11-22 19:07:06 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "Drop Table If exists INFLATION_BENCHMARK\000d\000a[*]CREATE TABLE Inflation_Benchmark (\000d\000a    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,\000d\000a    name VARCHAR(255),\000d\000a    benchmark_Return DOUBLE,\000d\000a    annum INT\000d\000a)"; SQL statement:
+Drop Table If exists INFLATION_BENCHMARK
+CREATE TABLE Inflation_Benchmark (
+    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    benchmark_Return DOUBLE,
+    annum INT
+) [42000-214]
+2023-11-22 19:07:07 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "Drop Table If exists INFLATION_BENCHMARK\000d\000a[*]CREATE TABLE Inflation_Benchmark (\000d\000a    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,\000d\000a    name VARCHAR(255),\000d\000a    benchmark_Return DOUBLE,\000d\000a    annum INT\000d\000a)"; SQL statement:
+Drop Table If exists INFLATION_BENCHMARK
+CREATE TABLE Inflation_Benchmark (
+    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    benchmark_Return DOUBLE,
+    annum INT
+) [42000-214]
+2023-11-22 19:07:07 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "Drop Table If exists INFLATION_BENCHMARK\000d\000a[*]CREATE TABLE Inflation_Benchmark (\000d\000a    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,\000d\000a    name VARCHAR(255),\000d\000a    benchmark_Return DOUBLE,\000d\000a    annum INT\000d\000a)"; SQL statement:
+Drop Table If exists INFLATION_BENCHMARK
+CREATE TABLE Inflation_Benchmark (
+    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    benchmark_Return DOUBLE,
+    annum INT
+) [42000-214]
+2023-11-22 19:07:07 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "Drop Table If exists INFLATION_BENCHMARK\000d\000a[*]CREATE TABLE Inflation_Benchmark (\000d\000a    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,\000d\000a    name VARCHAR(255),\000d\000a    benchmark_Return DOUBLE,\000d\000a    annum INT\000d\000a)"; SQL statement:
+Drop Table If exists INFLATION_BENCHMARK
+CREATE TABLE Inflation_Benchmark (
+    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    benchmark_Return DOUBLE,
+    annum INT
+) [42000-214]
+2023-11-22 19:07:07 jdbc[15]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "Drop Table If exists INFLATION_BENCHMARK\000d\000a[*]CREATE TABLE Inflation_Benchmark (\000d\000a    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,\000d\000a    name VARCHAR(255),\000d\000a    benchmark_Return DOUBLE,\000d\000a    annum INT\000d\000a)"; SQL statement:
+Drop Table If exists INFLATION_BENCHMARK
+CREATE TABLE Inflation_Benchmark (
+    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    benchmark_Return DOUBLE,
+    annum INT
+) [42000-214]
+2023-11-22 19:09:29 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "INFLATIONBENCHMARK" not found; SQL statement:
+INSERT INTO InflationBenchmark (name, benchmarkReturn, annum) VALUES
+    ('Inflation2020', 2.5, 2020),
+    ('Inflation2021', 3.0, 2021),
+    ('Inflation2022', 2.8, 2022),
+    ('Inflation2023', 2.2, 2023) [42102-214]
+2023-11-22 19:36:02 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "INFLATION_BENCHMARK" already exists; SQL statement:
+CREATE TABLE Inflation_Benchmark (
+    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    return_2020 DOUBLE,
+    return_2021 DOUBLE,
+    return_2022 DOUBLE,
+    return_2023 DOUBLE
+) [42101-214]
+2023-11-22 19:36:06 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "INFLATION_BENCHMARK" already exists; SQL statement:
+CREATE TABLE Inflation_Benchmark (
+    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    return_2020 DOUBLE,
+    return_2021 DOUBLE,
+    return_2022 DOUBLE,
+    return_2023 DOUBLE
+) [42101-214]
+2023-11-22 19:36:27 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DROP table INFLATION_BENCHMARK\000d\000a[*]CREATE TABLE Inflation_Benchmark (\000d\000a    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,\000d\000a    name VARCHAR(255),\000d\000a    return_2020 DOUBLE,\000d\000a    return_2021 DOUBLE,\000d\000a    return_2022 DOUBLE,\000d\000a    return_2023 DOUBLE\000d\000a)"; SQL statement:
+DROP table INFLATION_BENCHMARK
+CREATE TABLE Inflation_Benchmark (
+    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    return_2020 DOUBLE,
+    return_2021 DOUBLE,
+    return_2022 DOUBLE,
+    return_2023 DOUBLE
+) [42000-214]
+2023-11-22 19:36:36 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "drop table INFLATION_BENCHMARK\000d\000a[*]CREATE TABLE Inflation_Benchmark (\000d\000a    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,\000d\000a    name VARCHAR(255),\000d\000a    return_2020 DOUBLE,\000d\000a    return_2021 DOUBLE,\000d\000a    return_2022 DOUBLE,\000d\000a    return_2023 DOUBLE\000d\000a)"; SQL statement:
+drop table INFLATION_BENCHMARK
+CREATE TABLE Inflation_Benchmark (
+    inflationID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+    return_2020 DOUBLE,
+    return_2021 DOUBLE,
+    return_2022 DOUBLE,
+    return_2023 DOUBLE
+) [42000-214]
+2023-11-22 19:47:44 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "BENCHMARKRETURN" not found; SQL statement:
+-- Sample data for Benchmark table
+INSERT INTO Benchmark (name, benchmarkReturn, annum)
+VALUES
+    ('SPX', 2.5, 2020),
+    ('SPX', 3.0, 2021),
+    ('SPX', 2.8, 2022),
+    ('SPX', 3.5, 2023) [42122-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.table.Table.getColumn(Table.java:749)
+	at org.h2.command.Parser.parseColumn(Parser.java:1256)
+	at org.h2.command.Parser.parseColumnList(Parser.java:1241)
+	at org.h2.command.Parser.parseInsert(Parser.java:1641)
+	at org.h2.command.Parser.parsePrepared(Parser.java:814)
+	at org.h2.command.Parser.parse(Parser.java:689)
+	at org.h2.command.Parser.parse(Parser.java:661)
+	at org.h2.command.Parser.prepareCommand(Parser.java:569)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp.query(WebApp.java:1113)
+	at org.h2.server.web.WebApp.process(WebApp.java:244)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:176)
+	at org.h2.server.web.JakartaWebServlet.doGet(JakartaWebServlet.java:129)
+	at org.h2.server.web.JakartaWebServlet.doPost(JakartaWebServlet.java:166)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2023-11-22 19:47:44 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "INFLATIONBENCHMARK" not found; SQL statement:
+-- Insert InflationBenchmark with returns 3% more than Benchmark for each year
+INSERT INTO InflationBenchmark (name, return_2020, return_2021, return_2022, return_2023)
+SELECT
+    'Inflation1',
+    benchmarkReturn * 1.03 AS return_2020,
+    benchmarkReturn * 1.03 AS return_2021,
+    benchmarkReturn * 1.03 AS return_2022,
+    benchmarkReturn * 1.03 AS return_2023,
+    annum
+FROM Benchmark
+WHERE name = 'SPX' [42102-214]
+2023-11-22 19:47:44 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "INFLATIONBENCHMARK" not found; SQL statement:
+-- Insert InflationBenchmark with returns 4% more than Benchmark for each year
+INSERT INTO InflationBenchmark (name, return_2020, return_2021, return_2022, return_2023)
+SELECT
+    'Inflation2',
+    benchmarkReturn * 1.04 AS return_2020,
+    benchmarkReturn * 1.04 AS return_2021,
+    benchmarkReturn * 1.04 AS return_2022,
+    benchmarkReturn * 1.04 AS return_2023,
+    annum
+FROM Benchmark
+WHERE name = 'SPX' [42102-214]
+2023-11-22 19:47:44 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "INFLATIONBENCHMARK" not found; SQL statement:
+-- Insert InflationBenchmark with returns 5% more than Benchmark for each year
+INSERT INTO InflationBenchmark (name, return_2020, return_2021, return_2022, return_2023)
+SELECT
+    'Inflation3',
+    benchmarkReturn * 1.05 AS return_2020,
+    benchmarkReturn * 1.05 AS return_2021,
+    benchmarkReturn * 1.05 AS return_2022,
+    benchmarkReturn * 1.05 AS return_2023,
+    annum
+FROM Benchmark
+WHERE name = 'SPX' [42102-214]

@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.awt.*;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,6 +34,8 @@ public class PortfolioService {
     @Autowired
     private InvestmentsRepository investmentsRepository;
 
+    @Autowired
+    private InflationBenchmarkRepository inflationBenchmarkRepository;
 
     public void loadLineChartData(XYChart<String, Number> lineChart) {
         Optional<Client> client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(), SharedData.getPassword());
@@ -55,22 +59,45 @@ public class PortfolioService {
         }
 
         lineChart.setLegendVisible(true);
+        lineChart.getYAxis().setLabel("Performance in %");
         lineChart.getData().addAll(series, series2);
     }
 
     public void loadBarChartData(XYChart<String, Number> barChart) {
         Optional<Client> client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(), SharedData.getPassword());
-        List<Portfolio> portfolioDataList = portfolioRepository.findByClient(client.get());
-
+        List<PerformanceMetrics> performanceMetricsList = performanceMetricsRepository.findByClient(client.get());
+        List<InflationBenchmark> inflationBenchmarksList = inflationBenchmarkRepository.findAll();
         XYChart.Series<String, Number> series = new XYChart.Series<>();
+        XYChart.Series<String, Number> series2 = new XYChart.Series<>();
 
-        for (Portfolio data : portfolioDataList) {
-            series.getData().add(new XYChart.Data<>(data.getSymbol(), data.getPurchasePrice() * data.getQuantity()));
+        series.setName("Client Performance");
+        series2.setName("Inflation Benchmark");
+
+        // Add data for PerformanceMetrics
+        for (PerformanceMetrics data : performanceMetricsList) {
+            series.getData().add(new XYChart.Data<>("2020", data.getReturn_2020()));
+            series.getData().add(new XYChart.Data<>("2021", data.getReturn_2021()));
+            series.getData().add(new XYChart.Data<>("2022", data.getReturn_2022()));
+            series.getData().add(new XYChart.Data<>("2023", data.getReturn_2023()));
         }
+
+        // Add data for InflationBenchmark with adjusted X-values
+        for (InflationBenchmark data : inflationBenchmarksList) {
+            series2.getData().add(new XYChart.Data<>("2020" , data.getReturn_2020()));
+            series2.getData().add(new XYChart.Data<>("2021", data.getReturn_2021()));
+            series2.getData().add(new XYChart.Data<>("2022", data.getReturn_2022()));
+            series2.getData().add(new XYChart.Data<>("2023", data.getReturn_2023()));
+        }
+
         barChart.getData().clear();
-        barChart.getData().add(series);
-        barChart.setLegendVisible(false);
+        barChart.getYAxis().setLabel("Performance in %");
+
+        barChart.getData().addAll(series, series2);
+
+        barChart.setLegendVisible(true);
     }
+
+
     public void loadPieChartData(PieChart pieChart) {
         Optional<Client> client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(), SharedData.getPassword());
         List<Portfolio> portfolioDataList = portfolioRepository.findByClient(client.get());
