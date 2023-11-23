@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
-  <title>Coverage Report > BenchmarkRepository</title>
+  <title>Coverage Report > TransactionRepository</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -22,28 +22,16 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">org.FPAS.springApp.Repository</a>
 </div>
 
-<h1>Coverage Summary for Class: BenchmarkRepository (org.FPAS.springApp.Repository)</h1>
+<h1>Coverage Summary for Class: TransactionRepository (org.FPAS.springApp.Repository)</h1>
 
 <table class="coverageStats">
-
 <tr>
   <th class="name">Class</th>
 </tr>
-  <tr>
-    <td class="name">BenchmarkRepository$MockitoMock$619038490</td>
-  </tr>
-  <tr>
-    <td class="name">BenchmarkRepository$MockitoMock$619038490$auxiliary$8K39jeel</td>
-  </tr>
-  <tr>
-    <td class="name">BenchmarkRepository$MockitoMock$619038490$auxiliary$EMODcVZh</td>
-  </tr>
-  <tr>
-    <td class="name">BenchmarkRepository$MockitoMock$619038490$auxiliary$m0XlPUFV</td>
-  </tr>
 <tr>
-  <td class="name"><strong>Total</strong></td>
+  <td class="name">TransactionRepository</td>
 </tr>
+
 </table>
 
 <br/>
@@ -53,14 +41,16 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <code class="sourceCode" id="sourceCode">&nbsp;package org.FPAS.springApp.Repository;
 &nbsp;
-&nbsp;import org.FPAS.springApp.model.Benchmark;
+&nbsp;import org.FPAS.springApp.model.Client;
+&nbsp;import org.FPAS.springApp.model.Transaction;
 &nbsp;import org.springframework.data.jpa.repository.JpaRepository;
 &nbsp;import org.springframework.stereotype.Repository;
 &nbsp;
+&nbsp;import java.util.List;
+&nbsp;
 &nbsp;@Repository
-&nbsp;public interface BenchmarkRepository extends JpaRepository&lt;Benchmark, Long&gt; {
-&nbsp;
-&nbsp;
+&nbsp;public interface TransactionRepository extends JpaRepository&lt;Transaction, Long&gt; {
+&nbsp;    List&lt;Transaction&gt; findByClient(Client client);
 &nbsp;}
 </code>
 </pre>

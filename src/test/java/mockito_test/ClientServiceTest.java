@@ -73,4 +73,76 @@ public class ClientServiceTest {
             verify(clientRepositoryMock, never()).save(any(Client.class));
         });
     }
+    @Test
+    void testLoginUser_Successful() {
+        new JFXPanel();
+
+        ClientRepository clientRepositoryMock = mock(ClientRepository.class);
+        ClientService clientService = new ClientService(clientRepositoryMock);
+
+        String username = "johnnyD";
+        String password = "password";
+
+        ActionEvent actionEventMock = mock(ActionEvent.class);
+
+        Client existingClient = Client.builder()
+                .name("Johnathan")
+                .username(username)
+                .password(password)
+                .email("john.doe@example.com")
+                .build();
+
+        when(clientRepositoryMock.findByUsernameAndPassword(username, password)).thenReturn(Optional.of(existingClient));
+
+        Platform.runLater(() -> {
+            clientService.loginUser(actionEventMock, username, password);
+
+        });
+    }
+
+    @Test
+    void testLoginUser_Unsuccessful() {
+        new JFXPanel();
+
+        ClientRepository clientRepositoryMock = mock(ClientRepository.class);
+        ClientService clientService = new ClientService(clientRepositoryMock);
+
+        String username = "nonexistentUser";
+        String password = "wrongPassword";
+
+        ActionEvent actionEventMock = mock(ActionEvent.class);
+
+        when(clientRepositoryMock.findByUsernameAndPassword(username, password)).thenReturn(Optional.empty());
+
+        Platform.runLater(() -> {
+            clientService.loginUser(actionEventMock, username, password);
+
+        });
+    }
+
+    @Test
+    void testLoginUser_Static_Successful() {
+        new JFXPanel();
+
+        ClientRepository clientRepositoryMock = mock(ClientRepository.class);
+        ClientService clientService = new ClientService(clientRepositoryMock);
+
+        String username = "johnnyD";
+        String password = "password";
+
+        Client existingClient = Client.builder()
+                .name("Johnathan")
+                .username(username)
+                .password(password)
+                .email("john.doe@example.com")
+                .build();
+
+        when(clientRepositoryMock.findByUsernameAndPassword(username, password)).thenReturn(Optional.of(existingClient));
+
+        Platform.runLater(() -> {
+            clientService.loginUser(username, password);
+
+        });
+    }
+
 }

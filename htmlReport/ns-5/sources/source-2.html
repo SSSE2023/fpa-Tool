@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
-  <title>Coverage Report > Transaction</title>
+  <title>Coverage Report > Client</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -22,7 +22,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">org.FPAS.springApp.model</a>
 </div>
 
-<h1>Coverage Summary for Class: Transaction (org.FPAS.springApp.model)</h1>
+<h1>Coverage Summary for Class: Client (org.FPAS.springApp.model)</h1>
 
 <table class="coverageStats">
 
@@ -38,38 +38,26 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">Transaction</td>
+  <td class="name">Client</td>
 <td class="coverageStat">
   <span class="percent">
-    88.9%
+    40%
   </span>
   <span class="absValue">
-    (8/9)
+    (4/10)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    88.9%
+    40%
   </span>
   <span class="absValue">
-    (8/9)
+    (4/10)
   </span>
 </td>
 </tr>
   <tr>
-    <td class="name">Transaction$HibernateInstantiator$HDb0HMli</td>
-  </tr>
-  <tr>
-    <td class="name">Transaction$HibernateInstantiator$QN8RQg7f</td>
-  </tr>
-  <tr>
-    <td class="name">Transaction$HibernateProxy$1TzQT6jL</td>
-  </tr>
-  <tr>
-    <td class="name">Transaction$HibernateProxy$VQxy2scD</td>
-  </tr>
-  <tr>
-    <td class="name">Transaction$TransactionBuilder</td>
+    <td class="name">Client$ClientBuilder</td>
 <td class="coverageStat">
   <span class="percent">
     100%
@@ -86,23 +74,35 @@ Current scope:     <a href="../../index.html">all classes</a>
     (1/1)
   </span>
 </td>
+  </tr>
+  <tr>
+    <td class="name">Client$HibernateInstantiator$DbkEQUYi</td>
+  </tr>
+  <tr>
+    <td class="name">Client$HibernateInstantiator$S1ssXddQ</td>
+  </tr>
+  <tr>
+    <td class="name">Client$HibernateProxy$7bhhQDx6</td>
+  </tr>
+  <tr>
+    <td class="name">Client$HibernateProxy$bC4pljXP</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
 <td class="coverageStat">
   <span class="percent">
-    90%
+    45.5%
   </span>
   <span class="absValue">
-    (9/10)
+    (5/11)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    90%
+    45.5%
   </span>
   <span class="absValue">
-    (9/10)
+    (5/11)
   </span>
 </td>
 </tr>
@@ -118,23 +118,23 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;import jakarta.persistence.*;
 &nbsp;import lombok.*;
 &nbsp;
+&nbsp;
 &nbsp;@Entity
-<b class="nc">&nbsp;@Data</b>
+<b class="fc">&nbsp;@Data</b>
 <b class="fc">&nbsp;@AllArgsConstructor</b>
 <b class="fc">&nbsp;@NoArgsConstructor</b>
 <b class="fc">&nbsp;@Builder</b>
+<b class="nc">&nbsp;@Setter</b>
 &nbsp;@Getter
-&nbsp;public class Transaction {
+&nbsp;public class Client {
 &nbsp;    @Id
 &nbsp;    @GeneratedValue
-<b class="fc">&nbsp;    private long transactionID;</b>
+<b class="nc">&nbsp;    private long uID;</b>
+<b class="nc">&nbsp;    private String name;</b>
+<b class="nc">&nbsp;    private String username;</b>
+<b class="nc">&nbsp;    private String password;</b>
+<b class="nc">&nbsp;    private String email;</b>
 &nbsp;
-&nbsp;    @ManyToOne
-&nbsp;    @JoinColumn(name = &quot;client_id&quot;, nullable = false)
-<b class="fc">&nbsp;    private Client client;</b>
-<b class="fc">&nbsp;    private String transaction_year;</b>
-<b class="fc">&nbsp;    private String transaction_type;</b>
-<b class="fc">&nbsp;    private double transaction_amount;</b>
 &nbsp;
 &nbsp;}
 </code>

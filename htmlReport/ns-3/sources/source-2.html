@@ -1,0 +1,254 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > PortfolioService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.FPAS.javaFXApp.service</a>
+</div>
+
+<h1>Coverage Summary for Class: PortfolioService (org.FPAS.javaFXApp.service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PortfolioService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85.7%
+  </span>
+  <span class="absValue">
+    (66/77)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.FPAS.javaFXApp.service;
+&nbsp;
+&nbsp;import javafx.scene.chart.PieChart;
+&nbsp;import javafx.scene.chart.XYChart;
+&nbsp;import lombok.AllArgsConstructor;
+&nbsp;import lombok.NoArgsConstructor;
+&nbsp;import org.FPAS.javaFXApp.SharedData;
+&nbsp;import org.FPAS.springApp.Repository.*;
+&nbsp;import org.FPAS.springApp.model.*;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;
+&nbsp;import java.awt.*;
+&nbsp;import java.util.HashMap;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Map;
+&nbsp;import java.util.Optional;
+<b class="fc">&nbsp;@AllArgsConstructor</b>
+<b class="fc">&nbsp;@NoArgsConstructor</b>
+&nbsp;@Service
+&nbsp;public class PortfolioService {
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    private PortfolioRepository portfolioRepository;
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    private ClientRepository clientRepository;
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    private PerformanceMetricsRepository performanceMetricsRepository;
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    private BenchmarkRepository benchmarkRepository;
+&nbsp;    @Autowired
+&nbsp;    private InvestmentsRepository investmentsRepository;
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    private InflationBenchmarkRepository inflationBenchmarkRepository;
+&nbsp;
+&nbsp;    public void loadLineChartData(XYChart&lt;String, Number&gt; lineChart) {
+<b class="fc">&nbsp;        Optional&lt;Client&gt; client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(), SharedData.getPassword());</b>
+<b class="fc">&nbsp;        List&lt;PerformanceMetrics&gt; performanceMetricsList = performanceMetricsRepository.findByClient(client.get());</b>
+<b class="fc">&nbsp;        List&lt;Benchmark&gt; benchmark = benchmarkRepository.findAll();</b>
+<b class="fc">&nbsp;        XYChart.Series&lt;String, Number&gt; series = new XYChart.Series&lt;&gt;();</b>
+<b class="fc">&nbsp;        XYChart.Series&lt;String, Number&gt; series2 = new XYChart.Series&lt;&gt;();</b>
+&nbsp;
+<b class="fc">&nbsp;        series.setName(&quot;Client Performance&quot;);</b>
+<b class="fc">&nbsp;        series2.setName(&quot;Benchmark&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;        for (PerformanceMetrics data : performanceMetricsList) {</b>
+<b class="fc">&nbsp;            series.getData().add(new XYChart.Data&lt;&gt;(&quot;2020&quot;, data.getReturn_2020()));</b>
+<b class="fc">&nbsp;            series.getData().add(new XYChart.Data&lt;&gt;(&quot;2021&quot;, data.getReturn_2021()));</b>
+<b class="fc">&nbsp;            series.getData().add(new XYChart.Data&lt;&gt;(&quot;2022&quot;, data.getReturn_2022()));</b>
+<b class="fc">&nbsp;            series.getData().add(new XYChart.Data&lt;&gt;(&quot;2023&quot;, data.getReturn_2023()));</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+<b class="fc">&nbsp;        for (Benchmark data : benchmark) {</b>
+<b class="fc">&nbsp;            series2.getData().add(new XYChart.Data&lt;&gt;(Integer.toString(data.getAnnum()), data.getBenchmarkReturn()));</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+<b class="fc">&nbsp;        lineChart.setLegendVisible(true);</b>
+<b class="fc">&nbsp;        lineChart.getYAxis().setLabel(&quot;Performance in %&quot;);</b>
+<b class="fc">&nbsp;        lineChart.getData().addAll(series, series2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void loadBarChartData(XYChart&lt;String, Number&gt; barChart) {
+<b class="fc">&nbsp;        Optional&lt;Client&gt; client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(), SharedData.getPassword());</b>
+<b class="fc">&nbsp;        List&lt;PerformanceMetrics&gt; performanceMetricsList = performanceMetricsRepository.findByClient(client.get());</b>
+<b class="fc">&nbsp;        List&lt;InflationBenchmark&gt; inflationBenchmarksList = inflationBenchmarkRepository.findAll();</b>
+<b class="fc">&nbsp;        XYChart.Series&lt;String, Number&gt; series = new XYChart.Series&lt;&gt;();</b>
+<b class="fc">&nbsp;        XYChart.Series&lt;String, Number&gt; series2 = new XYChart.Series&lt;&gt;();</b>
+&nbsp;
+<b class="fc">&nbsp;        series.setName(&quot;Client Performance&quot;);</b>
+<b class="fc">&nbsp;        series2.setName(&quot;Inflation Benchmark&quot;);</b>
+&nbsp;
+&nbsp;        // Add data for PerformanceMetrics
+<b class="fc">&nbsp;        for (PerformanceMetrics data : performanceMetricsList) {</b>
+<b class="nc">&nbsp;            series.getData().add(new XYChart.Data&lt;&gt;(&quot;2020&quot;, data.getReturn_2020()));</b>
+<b class="nc">&nbsp;            series.getData().add(new XYChart.Data&lt;&gt;(&quot;2021&quot;, data.getReturn_2021()));</b>
+<b class="nc">&nbsp;            series.getData().add(new XYChart.Data&lt;&gt;(&quot;2022&quot;, data.getReturn_2022()));</b>
+<b class="nc">&nbsp;            series.getData().add(new XYChart.Data&lt;&gt;(&quot;2023&quot;, data.getReturn_2023()));</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+&nbsp;        // Add data for InflationBenchmark with adjusted X-values
+<b class="fc">&nbsp;        for (InflationBenchmark data : inflationBenchmarksList) {</b>
+<b class="nc">&nbsp;            series2.getData().add(new XYChart.Data&lt;&gt;(&quot;2020&quot; , data.getReturn_2020()));</b>
+<b class="nc">&nbsp;            series2.getData().add(new XYChart.Data&lt;&gt;(&quot;2021&quot;, data.getReturn_2021()));</b>
+<b class="nc">&nbsp;            series2.getData().add(new XYChart.Data&lt;&gt;(&quot;2022&quot;, data.getReturn_2022()));</b>
+<b class="nc">&nbsp;            series2.getData().add(new XYChart.Data&lt;&gt;(&quot;2023&quot;, data.getReturn_2023()));</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;
+<b class="fc">&nbsp;        barChart.getData().clear();</b>
+<b class="fc">&nbsp;        barChart.getYAxis().setLabel(&quot;Performance in %&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;        barChart.getData().addAll(series, series2);</b>
+&nbsp;
+<b class="fc">&nbsp;        barChart.setLegendVisible(true);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public void loadPieChartData(PieChart pieChart) {
+<b class="fc">&nbsp;        Optional&lt;Client&gt; client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(), SharedData.getPassword());</b>
+<b class="fc">&nbsp;        List&lt;Portfolio&gt; portfolioDataList = portfolioRepository.findByClient(client.get());</b>
+&nbsp;
+<b class="fc">&nbsp;        PieChart.Data[] data = new PieChart.Data[portfolioDataList.size()];</b>
+&nbsp;
+<b class="fc">&nbsp;        double totalValue = 0;</b>
+&nbsp;
+<b class="fc">&nbsp;        for (int i = 0; i &lt; portfolioDataList.size(); i++) {</b>
+<b class="fc">&nbsp;            Portfolio portfolio = portfolioDataList.get(i);</b>
+<b class="fc">&nbsp;            data[i] = new PieChart.Data(portfolio.getSymbol(), portfolio.getPurchasePrice() * portfolio.getQuantity());</b>
+<b class="fc">&nbsp;            totalValue += data[i].getPieValue();</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        pieChart.getData().setAll(data);</b>
+<b class="fc">&nbsp;        pieChart.setLegendVisible(false);</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    public double calculateRiskRating() {
+<b class="fc">&nbsp;        Optional&lt;Client&gt; client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(), SharedData.getPassword());</b>
+<b class="fc">&nbsp;        List&lt;Portfolio&gt; portfolioDataList = portfolioRepository.findByClient(client.get());</b>
+<b class="fc">&nbsp;        double riskRating = 0;</b>
+<b class="fc">&nbsp;        int totalElements = 0;</b>
+<b class="fc">&nbsp;        for (Portfolio data : portfolioDataList) {</b>
+<b class="fc">&nbsp;            String symbol = data.getSymbol();</b>
+<b class="fc">&nbsp;            List&lt;Investments&gt; investmentsDataList = investmentsRepository.findBySymbol(symbol);</b>
+<b class="fc">&nbsp;            for (Investments data2 : investmentsDataList) {</b>
+<b class="fc">&nbsp;                riskRating += data2.getRisk_rating();</b>
+<b class="fc">&nbsp;                totalElements++;</b>
+<b class="fc">&nbsp;            }</b>
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        if (totalElements == 0) {</b>
+<b class="nc">&nbsp;            return 0;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        riskRating = riskRating/totalElements ;</b>
+&nbsp;
+<b class="fc">&nbsp;        return riskRating;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public double totalPortfolioValue() {
+<b class="fc">&nbsp;        Optional&lt;Client&gt; client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(), SharedData.getPassword());</b>
+<b class="fc">&nbsp;        List&lt;Portfolio&gt; portfolioDataList = portfolioRepository.findByClient(client.get());</b>
+<b class="fc">&nbsp;        double totalPortfolioValue = 0;</b>
+<b class="fc">&nbsp;        for (Portfolio data : portfolioDataList) {</b>
+<b class="fc">&nbsp;            totalPortfolioValue += data.getPurchasePrice() * data.getQuantity();</b>
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        return totalPortfolioValue;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-11-23 21:18</div>
+</div>
+</body>
+</html>

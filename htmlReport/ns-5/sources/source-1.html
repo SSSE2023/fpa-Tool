@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
-  <title>Coverage Report > Transaction</title>
+  <title>Coverage Report > Benchmark</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -22,7 +22,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">org.FPAS.springApp.model</a>
 </div>
 
-<h1>Coverage Summary for Class: Transaction (org.FPAS.springApp.model)</h1>
+<h1>Coverage Summary for Class: Benchmark (org.FPAS.springApp.model)</h1>
 
 <table class="coverageStats">
 
@@ -38,38 +38,26 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">Transaction</td>
+  <td class="name">Benchmark</td>
 <td class="coverageStat">
   <span class="percent">
-    88.9%
+    87.5%
   </span>
   <span class="absValue">
-    (8/9)
+    (7/8)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    88.9%
+    87.5%
   </span>
   <span class="absValue">
-    (8/9)
+    (7/8)
   </span>
 </td>
 </tr>
   <tr>
-    <td class="name">Transaction$HibernateInstantiator$HDb0HMli</td>
-  </tr>
-  <tr>
-    <td class="name">Transaction$HibernateInstantiator$QN8RQg7f</td>
-  </tr>
-  <tr>
-    <td class="name">Transaction$HibernateProxy$1TzQT6jL</td>
-  </tr>
-  <tr>
-    <td class="name">Transaction$HibernateProxy$VQxy2scD</td>
-  </tr>
-  <tr>
-    <td class="name">Transaction$TransactionBuilder</td>
+    <td class="name">Benchmark$BenchmarkBuilder</td>
 <td class="coverageStat">
   <span class="percent">
     100%
@@ -86,23 +74,35 @@ Current scope:     <a href="../../index.html">all classes</a>
     (1/1)
   </span>
 </td>
+  </tr>
+  <tr>
+    <td class="name">Benchmark$HibernateInstantiator$97x83BiP</td>
+  </tr>
+  <tr>
+    <td class="name">Benchmark$HibernateInstantiator$ef5Ubw2G</td>
+  </tr>
+  <tr>
+    <td class="name">Benchmark$HibernateProxy$7e4utGxo</td>
+  </tr>
+  <tr>
+    <td class="name">Benchmark$HibernateProxy$XVn11xvo</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
 <td class="coverageStat">
   <span class="percent">
-    90%
+    88.9%
   </span>
   <span class="absValue">
-    (9/10)
+    (8/9)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    90%
+    88.9%
   </span>
   <span class="absValue">
-    (9/10)
+    (8/9)
   </span>
 </td>
 </tr>
@@ -115,27 +115,28 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <code class="sourceCode" id="sourceCode">&nbsp;package org.FPAS.springApp.model;
 &nbsp;
-&nbsp;import jakarta.persistence.*;
-&nbsp;import lombok.*;
+&nbsp;import jakarta.persistence.Entity;
+&nbsp;import jakarta.persistence.GeneratedValue;
+&nbsp;import jakarta.persistence.Id;
+&nbsp;import lombok.AllArgsConstructor;
+&nbsp;import lombok.Builder;
+&nbsp;import lombok.Data;
+&nbsp;import lombok.NoArgsConstructor;
 &nbsp;
 &nbsp;@Entity
 <b class="nc">&nbsp;@Data</b>
 <b class="fc">&nbsp;@AllArgsConstructor</b>
 <b class="fc">&nbsp;@NoArgsConstructor</b>
 <b class="fc">&nbsp;@Builder</b>
-&nbsp;@Getter
-&nbsp;public class Transaction {
+&nbsp;public class Benchmark {
 &nbsp;    @Id
 &nbsp;    @GeneratedValue
-<b class="fc">&nbsp;    private long transactionID;</b>
+<b class="fc">&nbsp;    private long benchmarkID;</b>
+<b class="fc">&nbsp;    private String name;</b>
+<b class="fc">&nbsp;    private double benchmarkReturn;</b>
+<b class="fc">&nbsp;    private int annum;</b>
 &nbsp;
-&nbsp;    @ManyToOne
-&nbsp;    @JoinColumn(name = &quot;client_id&quot;, nullable = false)
-<b class="fc">&nbsp;    private Client client;</b>
-<b class="fc">&nbsp;    private String transaction_year;</b>
-<b class="fc">&nbsp;    private String transaction_type;</b>
-<b class="fc">&nbsp;    private double transaction_amount;</b>
-&nbsp;
+&nbsp;    // Add any other necessary fields
 &nbsp;}
 </code>
 </pre>
