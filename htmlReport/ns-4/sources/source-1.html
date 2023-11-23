@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
-  <title>Coverage Report > Transaction</title>
+  <title>Coverage Report > SpringJavaFxApplication</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -19,10 +19,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">org.FPAS.springApp.model</a>
+    <a href="../index.html">org.FPAS.springApp</a>
 </div>
 
-<h1>Coverage Summary for Class: Transaction (org.FPAS.springApp.model)</h1>
+<h1>Coverage Summary for Class: SpringJavaFxApplication (org.FPAS.springApp)</h1>
 
 <table class="coverageStats">
 
@@ -38,71 +38,43 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">Transaction</td>
+  <td class="name">SpringJavaFxApplication</td>
 <td class="coverageStat">
   <span class="percent">
-    88.9%
+    50%
   </span>
   <span class="absValue">
-    (8/9)
+    (1/2)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    88.9%
+    50%
   </span>
   <span class="absValue">
-    (8/9)
+    (1/2)
   </span>
 </td>
 </tr>
   <tr>
-    <td class="name">Transaction$HibernateInstantiator$HDb0HMli</td>
-  </tr>
-  <tr>
-    <td class="name">Transaction$HibernateInstantiator$QN8RQg7f</td>
-  </tr>
-  <tr>
-    <td class="name">Transaction$HibernateProxy$1TzQT6jL</td>
-  </tr>
-  <tr>
-    <td class="name">Transaction$HibernateProxy$VQxy2scD</td>
-  </tr>
-  <tr>
-    <td class="name">Transaction$TransactionBuilder</td>
-<td class="coverageStat">
-  <span class="percent">
-    100%
-  </span>
-  <span class="absValue">
-    (1/1)
-  </span>
-</td>
-<td class="coverageStat">
-  <span class="percent">
-    100%
-  </span>
-  <span class="absValue">
-    (1/1)
-  </span>
-</td>
+    <td class="name">SpringJavaFxApplication$$SpringCGLIB$$0</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
 <td class="coverageStat">
   <span class="percent">
-    90%
+    50%
   </span>
   <span class="absValue">
-    (9/10)
+    (1/2)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    90%
+    50%
   </span>
   <span class="absValue">
-    (9/10)
+    (1/2)
   </span>
 </td>
 </tr>
@@ -113,29 +85,20 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<code class="sourceCode" id="sourceCode">&nbsp;package org.FPAS.springApp.model;
+<code class="sourceCode" id="sourceCode">&nbsp;package org.FPAS.springApp;
 &nbsp;
-&nbsp;import jakarta.persistence.*;
-&nbsp;import lombok.*;
+&nbsp;import org.springframework.boot.SpringApplication;
+&nbsp;import org.springframework.boot.autoconfigure.SpringBootApplication;
+&nbsp;import org.springframework.context.annotation.ComponentScan;
+&nbsp;import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 &nbsp;
-&nbsp;@Entity
-<b class="nc">&nbsp;@Data</b>
-<b class="fc">&nbsp;@AllArgsConstructor</b>
-<b class="fc">&nbsp;@NoArgsConstructor</b>
-<b class="fc">&nbsp;@Builder</b>
-&nbsp;@Getter
-&nbsp;public class Transaction {
-&nbsp;    @Id
-&nbsp;    @GeneratedValue
-<b class="fc">&nbsp;    private long transactionID;</b>
+&nbsp;@SpringBootApplication
+&nbsp;@ComponentScan(basePackages = {&quot;org.FPAS&quot;, &quot;org.FPAS.javaFXApp&quot;,&quot;org.FPAS.springApp&quot;, &quot;org.FPAS.springApp.Repository&quot;})
 &nbsp;
-&nbsp;    @ManyToOne
-&nbsp;    @JoinColumn(name = &quot;client_id&quot;, nullable = false)
-<b class="fc">&nbsp;    private Client client;</b>
-<b class="fc">&nbsp;    private String transaction_year;</b>
-<b class="fc">&nbsp;    private String transaction_type;</b>
-<b class="fc">&nbsp;    private double transaction_amount;</b>
-&nbsp;
+<b class="fc">&nbsp;public class SpringJavaFxApplication {</b>
+&nbsp;    public static void main(String[] args) {
+<b class="nc">&nbsp;        SpringApplication.run(SpringJavaFxApplication.class, args);</b>
+&nbsp;    }
 &nbsp;}
 </code>
 </pre>

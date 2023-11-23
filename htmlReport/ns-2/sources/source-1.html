@@ -1,0 +1,311 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > InvestmentEntryController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.FPAS.javaFXApp.controller</a>
+</div>
+
+<h1>Coverage Summary for Class: InvestmentEntryController (org.FPAS.javaFXApp.controller)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">InvestmentEntryController</td>
+<td class="coverageStat">
+  <span class="percent">
+    20%
+  </span>
+  <span class="absValue">
+    (1/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    14.3%
+  </span>
+  <span class="absValue">
+    (3/21)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">InvestmentEntryController$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">InvestmentEntryController$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">InvestmentEntryController$3</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">InvestmentEntryController$4</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    7.7%
+  </span>
+  <span class="absValue">
+    (1/13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    10.3%
+  </span>
+  <span class="absValue">
+    (3/29)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.FPAS.javaFXApp.controller;
+&nbsp;
+&nbsp;import javafx.beans.property.SimpleDoubleProperty;
+&nbsp;import javafx.beans.property.SimpleIntegerProperty;
+&nbsp;import javafx.beans.property.SimpleStringProperty;
+&nbsp;import javafx.collections.FXCollections;
+&nbsp;import javafx.collections.ObservableList;
+&nbsp;import javafx.event.ActionEvent;
+&nbsp;import javafx.event.EventHandler;
+&nbsp;import javafx.fxml.FXML;
+&nbsp;import javafx.fxml.Initializable;
+&nbsp;import javafx.scene.control.*;
+&nbsp;import javafx.scene.control.Button;
+&nbsp;import lombok.NoArgsConstructor;
+&nbsp;import org.FPAS.javaFXApp.SharedData;
+&nbsp;import org.FPAS.springApp.Repository.ClientRepository;
+&nbsp;import org.FPAS.springApp.model.Client;
+&nbsp;import org.FPAS.springApp.model.Portfolio;
+&nbsp;import org.FPAS.springApp.Repository.PortfolioRepository;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.stereotype.Controller;
+&nbsp;import static org.FPAS.javaFXApp.FXMLHandler.changeScene;
+&nbsp;
+&nbsp;
+&nbsp;import java.net.URL;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Optional;
+&nbsp;import java.util.ResourceBundle;
+&nbsp;
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;@NoArgsConstructor</b>
+&nbsp;@Controller
+&nbsp;public class InvestmentEntryController implements Initializable {
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Button dashboardButton;
+&nbsp;    @FXML
+&nbsp;    private Label usernameField;
+&nbsp;    @FXML
+&nbsp;    private Button Sign_out;
+&nbsp;    @FXML
+&nbsp;    private Button transactionButton;
+&nbsp;    @FXML
+&nbsp;    private Button investmentsButton;
+&nbsp;    @FXML
+&nbsp;    private TableView&lt;Portfolio&gt; portfolioTable;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Portfolio, String&gt; symbol;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Portfolio, String&gt; purchaseYear;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Portfolio, Integer&gt; quantity;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Portfolio, Double&gt; purchasePrice;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Portfolio, String&gt; investmentType;
+&nbsp;
+&nbsp;    public static ClientRepository clientRepository;
+&nbsp;    public static PortfolioRepository portfolioRepository;
+&nbsp;    @Autowired
+<b class="fc">&nbsp;    public InvestmentEntryController(ClientRepository clientRepository, PortfolioRepository portfolioRepository) {</b>
+<b class="fc">&nbsp;        InvestmentEntryController.clientRepository = clientRepository;</b>
+<b class="fc">&nbsp;        InvestmentEntryController.portfolioRepository = portfolioRepository;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void initialize(URL url, ResourceBundle resourceBundle) {
+&nbsp;
+<b class="nc">&nbsp;        dashboardButton.setOnAction(new EventHandler&lt;ActionEvent&gt;() {</b>
+&nbsp;            @Override
+&nbsp;            public void handle(ActionEvent event) {
+<b class="nc">&nbsp;                changeScene(event, &quot;PortfolioView.fxml&quot;, null, null, PortfolioController.class);</b>
+&nbsp;            }
+&nbsp;        });
+<b class="nc">&nbsp;        Sign_out.setOnAction(new EventHandler&lt;ActionEvent&gt;() {</b>
+&nbsp;            @Override
+&nbsp;            public void handle(ActionEvent event) {
+<b class="nc">&nbsp;                changeScene(event, &quot;AuthenticationView2.fxml&quot;, null, null, authController.class);</b>
+&nbsp;            }
+&nbsp;        });
+<b class="nc">&nbsp;        investmentsButton.setOnAction(new EventHandler&lt;ActionEvent&gt;() {</b>
+&nbsp;            @Override
+&nbsp;            public void handle(ActionEvent event) {
+<b class="nc">&nbsp;                changeScene(event,&quot;InvestmentEntryView.fxml&quot;, null, null, InvestmentEntryController.class);</b>
+&nbsp;            }
+&nbsp;        });
+<b class="nc">&nbsp;        transactionButton.setOnAction(new EventHandler&lt;ActionEvent&gt;() {</b>
+&nbsp;            @Override
+&nbsp;            public void handle(ActionEvent event) {
+<b class="nc">&nbsp;                changeScene(event, &quot;TransactionRecordingView.fxml&quot;, null, null, PortfolioController.class);</b>
+&nbsp;            }
+&nbsp;        });
+<b class="nc">&nbsp;        Optional&lt;Client&gt; userOptional = clientRepository.findByUsernameAndPassword(SharedData.getUsername(), SharedData.getPassword());</b>
+<b class="nc">&nbsp;        userOptional.ifPresent(client -&gt; {</b>
+<b class="nc">&nbsp;            usernameField.setText(client.getName());</b>
+&nbsp;        });
+<b class="nc">&nbsp;        initializeTableView();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void initializeTableView() {
+&nbsp;
+<b class="nc">&nbsp;           Optional&lt;Client&gt; client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(),SharedData.getPassword());</b>
+<b class="nc">&nbsp;           List&lt;Portfolio&gt; portfolioList = portfolioRepository.findByClient(client.get());</b>
+&nbsp;
+<b class="nc">&nbsp;           symbol.setCellValueFactory(cellData -&gt; new SimpleStringProperty(cellData.getValue().getSymbol()));</b>
+<b class="nc">&nbsp;           purchaseYear.setCellValueFactory(cellData -&gt; new SimpleStringProperty(cellData.getValue().getPurchaseYear()));</b>
+<b class="nc">&nbsp;           quantity.setCellValueFactory(cellData -&gt; new SimpleIntegerProperty(cellData.getValue().getQuantity()).asObject());</b>
+<b class="nc">&nbsp;           purchasePrice.setCellValueFactory(cellData -&gt; new SimpleDoubleProperty(cellData.getValue().getPurchasePrice()).asObject());</b>
+<b class="nc">&nbsp;           investmentType.setCellValueFactory(cellData -&gt; new SimpleStringProperty(cellData.getValue().getInvestmentType()));</b>
+&nbsp;
+<b class="nc">&nbsp;           ObservableList&lt;Portfolio&gt; observableList = FXCollections.observableArrayList(portfolioList);</b>
+<b class="nc">&nbsp;           portfolioTable.setItems(observableList);</b>
+&nbsp;        }
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-11-23 21:18</div>
+</div>
+</body>
+</html>

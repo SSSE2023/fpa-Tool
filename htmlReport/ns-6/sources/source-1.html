@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
-  <title>Coverage Report > BenchmarkRepository</title>
+  <title>Coverage Report > PortfolioRepository</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -22,7 +22,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">org.FPAS.springApp.Repository</a>
 </div>
 
-<h1>Coverage Summary for Class: BenchmarkRepository (org.FPAS.springApp.Repository)</h1>
+<h1>Coverage Summary for Class: PortfolioRepository (org.FPAS.springApp.Repository)</h1>
 
 <table class="coverageStats">
 
@@ -30,16 +30,16 @@ Current scope:     <a href="../../index.html">all classes</a>
   <th class="name">Class</th>
 </tr>
   <tr>
-    <td class="name">BenchmarkRepository$MockitoMock$619038490</td>
+    <td class="name">PortfolioRepository$MockitoMock$1534681807</td>
   </tr>
   <tr>
-    <td class="name">BenchmarkRepository$MockitoMock$619038490$auxiliary$8K39jeel</td>
+    <td class="name">PortfolioRepository$MockitoMock$1534681807$auxiliary$46k7onkK</td>
   </tr>
   <tr>
-    <td class="name">BenchmarkRepository$MockitoMock$619038490$auxiliary$EMODcVZh</td>
+    <td class="name">PortfolioRepository$MockitoMock$1534681807$auxiliary$ArgubkH3</td>
   </tr>
   <tr>
-    <td class="name">BenchmarkRepository$MockitoMock$619038490$auxiliary$m0XlPUFV</td>
+    <td class="name">PortfolioRepository$MockitoMock$1534681807$auxiliary$aXWZNbLO</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -53,15 +53,20 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <code class="sourceCode" id="sourceCode">&nbsp;package org.FPAS.springApp.Repository;
 &nbsp;
-&nbsp;import org.FPAS.springApp.model.Benchmark;
+&nbsp;import org.FPAS.springApp.model.Client;
+&nbsp;import org.FPAS.springApp.model.Portfolio;
 &nbsp;import org.springframework.data.jpa.repository.JpaRepository;
+&nbsp;import org.springframework.data.jpa.repository.Query;
+&nbsp;import org.springframework.data.repository.query.Param;
 &nbsp;import org.springframework.stereotype.Repository;
 &nbsp;
+&nbsp;import java.util.List;
+&nbsp;
 &nbsp;@Repository
-&nbsp;public interface BenchmarkRepository extends JpaRepository&lt;Benchmark, Long&gt; {
-&nbsp;
-&nbsp;
+&nbsp;public interface PortfolioRepository extends JpaRepository&lt;Portfolio, Long&gt; {
+&nbsp;    List&lt;Portfolio&gt; findByClient(Client client);
 &nbsp;}
+&nbsp;
 </code>
 </pre>
 </div>

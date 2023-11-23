@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
-  <title>Coverage Report > BenchmarkRepository</title>
+  <title>Coverage Report > InvestmentsRepository</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -22,7 +22,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">org.FPAS.springApp.Repository</a>
 </div>
 
-<h1>Coverage Summary for Class: BenchmarkRepository (org.FPAS.springApp.Repository)</h1>
+<h1>Coverage Summary for Class: InvestmentsRepository (org.FPAS.springApp.Repository)</h1>
 
 <table class="coverageStats">
 
@@ -30,16 +30,16 @@ Current scope:     <a href="../../index.html">all classes</a>
   <th class="name">Class</th>
 </tr>
   <tr>
-    <td class="name">BenchmarkRepository$MockitoMock$619038490</td>
+    <td class="name">InvestmentsRepository$MockitoMock$922081156</td>
   </tr>
   <tr>
-    <td class="name">BenchmarkRepository$MockitoMock$619038490$auxiliary$8K39jeel</td>
+    <td class="name">InvestmentsRepository$MockitoMock$922081156$auxiliary$A2fWBupV</td>
   </tr>
   <tr>
-    <td class="name">BenchmarkRepository$MockitoMock$619038490$auxiliary$EMODcVZh</td>
+    <td class="name">InvestmentsRepository$MockitoMock$922081156$auxiliary$FvWVfc3m</td>
   </tr>
   <tr>
-    <td class="name">BenchmarkRepository$MockitoMock$619038490$auxiliary$m0XlPUFV</td>
+    <td class="name">InvestmentsRepository$MockitoMock$922081156$auxiliary$Km2umsYo</td>
   </tr>
 <tr>
   <td class="name"><strong>Total</strong></td>
@@ -53,14 +53,17 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <code class="sourceCode" id="sourceCode">&nbsp;package org.FPAS.springApp.Repository;
 &nbsp;
-&nbsp;import org.FPAS.springApp.model.Benchmark;
+&nbsp;import org.FPAS.springApp.model.Investments;
 &nbsp;import org.springframework.data.jpa.repository.JpaRepository;
+&nbsp;import org.springframework.data.jpa.repository.Query;
 &nbsp;import org.springframework.stereotype.Repository;
 &nbsp;
+&nbsp;import java.util.List;
+&nbsp;
 &nbsp;@Repository
-&nbsp;public interface BenchmarkRepository extends JpaRepository&lt;Benchmark, Long&gt; {
-&nbsp;
-&nbsp;
+&nbsp;public interface InvestmentsRepository extends JpaRepository&lt;Investments, String&gt; {
+&nbsp;    @Query(&quot;SELECT p FROM Investments p WHERE p.symbol = :symbol&quot;)
+&nbsp;    List&lt;Investments&gt; findBySymbol(String symbol);
 &nbsp;}
 </code>
 </pre>

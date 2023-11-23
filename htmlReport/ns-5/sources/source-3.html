@@ -5,7 +5,7 @@
 <html id="htmlId">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
-  <title>Coverage Report > Transaction</title>
+  <title>Coverage Report > InflationBenchmark</title>
   <style type="text/css">
     @import "../../css/coverage.css";
     @import "../../css/idea.min.css";
@@ -22,7 +22,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">org.FPAS.springApp.model</a>
 </div>
 
-<h1>Coverage Summary for Class: Transaction (org.FPAS.springApp.model)</h1>
+<h1>Coverage Summary for Class: InflationBenchmark (org.FPAS.springApp.model)</h1>
 
 <table class="coverageStats">
 
@@ -38,38 +38,38 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">Transaction</td>
+  <td class="name">InflationBenchmark</td>
 <td class="coverageStat">
   <span class="percent">
-    88.9%
+    100%
   </span>
   <span class="absValue">
-    (8/9)
+    (11/11)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    88.9%
+    100%
   </span>
   <span class="absValue">
-    (8/9)
+    (16/16)
   </span>
 </td>
 </tr>
   <tr>
-    <td class="name">Transaction$HibernateInstantiator$HDb0HMli</td>
+    <td class="name">InflationBenchmark$HibernateInstantiator$ky2HPznn</td>
   </tr>
   <tr>
-    <td class="name">Transaction$HibernateInstantiator$QN8RQg7f</td>
+    <td class="name">InflationBenchmark$HibernateInstantiator$YjcVgB2h</td>
   </tr>
   <tr>
-    <td class="name">Transaction$HibernateProxy$1TzQT6jL</td>
+    <td class="name">InflationBenchmark$HibernateProxy$OjfLMIbP</td>
   </tr>
   <tr>
-    <td class="name">Transaction$HibernateProxy$VQxy2scD</td>
+    <td class="name">InflationBenchmark$HibernateProxy$VcKg8RYf</td>
   </tr>
   <tr>
-    <td class="name">Transaction$TransactionBuilder</td>
+    <td class="name">InflationBenchmark$InflationBenchmarkBuilder</td>
 <td class="coverageStat">
   <span class="percent">
     100%
@@ -91,18 +91,18 @@ Current scope:     <a href="../../index.html">all classes</a>
   <td class="name"><strong>Total</strong></td>
 <td class="coverageStat">
   <span class="percent">
-    90%
+    100%
   </span>
   <span class="absValue">
-    (9/10)
+    (12/12)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    90%
+    100%
   </span>
   <span class="absValue">
-    (9/10)
+    (17/17)
   </span>
 </td>
 </tr>
@@ -115,26 +115,44 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <code class="sourceCode" id="sourceCode">&nbsp;package org.FPAS.springApp.model;
 &nbsp;
-&nbsp;import jakarta.persistence.*;
-&nbsp;import lombok.*;
+&nbsp;import jakarta.persistence.Entity;
+&nbsp;import jakarta.persistence.GeneratedValue;
+&nbsp;import jakarta.persistence.Id;
+&nbsp;import lombok.AllArgsConstructor;
+&nbsp;import lombok.Builder;
+&nbsp;import lombok.Data;
+&nbsp;import lombok.NoArgsConstructor;
 &nbsp;
 &nbsp;@Entity
-<b class="nc">&nbsp;@Data</b>
+<b class="fc">&nbsp;@Data</b>
 <b class="fc">&nbsp;@AllArgsConstructor</b>
 <b class="fc">&nbsp;@NoArgsConstructor</b>
 <b class="fc">&nbsp;@Builder</b>
-&nbsp;@Getter
-&nbsp;public class Transaction {
+&nbsp;public class InflationBenchmark {
 &nbsp;    @Id
 &nbsp;    @GeneratedValue
-<b class="fc">&nbsp;    private long transactionID;</b>
+<b class="fc">&nbsp;    private long inflationID;</b>
+<b class="fc">&nbsp;    private String name;</b>
+<b class="fc">&nbsp;    private double return_2020;</b>
+<b class="fc">&nbsp;    private double return_2021;</b>
+<b class="fc">&nbsp;    private double return_2022;</b>
+<b class="fc">&nbsp;    private double return_2023;</b>
+&nbsp;    // Add any other necessary fields
 &nbsp;
-&nbsp;    @ManyToOne
-&nbsp;    @JoinColumn(name = &quot;client_id&quot;, nullable = false)
-<b class="fc">&nbsp;    private Client client;</b>
-<b class="fc">&nbsp;    private String transaction_year;</b>
-<b class="fc">&nbsp;    private String transaction_type;</b>
-<b class="fc">&nbsp;    private double transaction_amount;</b>
+&nbsp;    public double getAdjustedReturn(String year) {
+<b class="fc">&nbsp;        switch (year) {</b>
+&nbsp;            case &quot;2020&quot;:
+<b class="fc">&nbsp;                return return_2020 + 0.03; // Adjusted return for 2020</b>
+&nbsp;            case &quot;2021&quot;:
+<b class="fc">&nbsp;                return return_2021 + 0.04; // Adjusted return for 2021</b>
+&nbsp;            case &quot;2022&quot;:
+<b class="fc">&nbsp;                return return_2022 + 0.05; // Adjusted return for 2022</b>
+&nbsp;            case &quot;2023&quot;:
+<b class="fc">&nbsp;                return return_2023 + 0.06; // Adjusted return for 2023</b>
+&nbsp;            default:
+<b class="fc">&nbsp;                return 0.0;</b>
+&nbsp;        }
+&nbsp;    }
 &nbsp;
 &nbsp;}
 </code>

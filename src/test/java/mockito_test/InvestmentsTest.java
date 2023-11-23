@@ -4,10 +4,16 @@ import org.FPAS.springApp.model.Investments;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class InvestmentsTest {
+class InvestmentsTest {
 
     @Test
-    public void testInvestments() {
+    void testInvestmentsConstructor() {
+        Investments investment = new Investments();
+        assertNotNull(investment);
+    }
+
+    @Test
+    void testInvestmentsFields() {
         Investments investment = Investments.builder()
                 .symbol("AAPL")
                 .name("Apple Inc.")
@@ -32,4 +38,7 @@ public class InvestmentsTest {
         assertEquals(180, investment.getPrice_2023_Q3());
         assertEquals(3, investment.getRisk_rating());
     }
+
+    // Add more test cases as needed
+
 }
