@@ -8,6 +8,7 @@ import javafx.scene.chart.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import lombok.NoArgsConstructor;
+import org.FPAS.javaFXApp.FXMLHandler;
 import org.FPAS.javaFXApp.SharedData;
 import org.FPAS.javaFXApp.service.PortfolioService;
 import org.FPAS.springApp.Repository.*;
@@ -26,25 +27,26 @@ import static org.FPAS.javaFXApp.FXMLHandler.changeScene;
 public class PortfolioController implements Initializable {
 
     @FXML
-    private Button transactionButton;
+    public Button transactionButton;
     @FXML
-    private Button investmentsButton;
+    public Button investmentsButton;
     @FXML
-    private LineChart<String, Number> lineChart;
+    public LineChart<String, Number> lineChart;
     @FXML
-    private BarChart<String, Number> barChart;
+    public BarChart<String, Number> barChart;
+    public org.FPAS.javaFXApp.FXMLHandler FXMLHandler;
     @FXML
     private Label usernameField;
     @FXML
-    private Button sign_out;
+    public Button sign_out;
     @FXML
-    private Label riskRatingLabel;
+    public Label riskRatingLabel;
     @FXML
-    private Label portfolioLabel;
+    public Label portfolioLabel;
     @FXML
-    private PieChart pieChart;
+    public PieChart pieChart;
     @FXML
-    private Label sumLabel;
+    public Label sumLabel;
 
     public static PortfolioRepository portfolioRepository;
     public static BenchmarkRepository benchmarkRepository;

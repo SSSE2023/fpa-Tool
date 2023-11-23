@@ -102,7 +102,7 @@ public class InvestmentEntryController implements Initializable {
         initializeTableView();
     }
 
-    private void initializeTableView() {
+    public void initializeTableView() {
 
            Optional<Client> client = clientRepository.findByUsernameAndPassword(SharedData.getUsername(),SharedData.getPassword());
            List<Portfolio> portfolioList = portfolioRepository.findByClient(client.get());
@@ -118,6 +118,7 @@ public class InvestmentEntryController implements Initializable {
         }
 
     }
+
 
 
 

@@ -22,13 +22,13 @@ import java.util.ResourceBundle;
 
 public class authController implements Initializable {
     @FXML
-    private Button loginButton;
+    public Button loginButton;
     @FXML
-    private Button signUpButton;
+    public Button signUpButton;
     @FXML
-    private TextField login_username;
+    public TextField login_username;
     @FXML
-    private TextField login_password;
+    public TextField login_password;
     @Autowired
     ClientRepository clientRepository;
 
@@ -52,7 +52,7 @@ public class authController implements Initializable {
                     alert.setContentText("Fill all information");
                     alert.show();
                 }
-
+                loginButton.setText("Logging in...");
             }
         });
         signUpButton.setOnAction(new EventHandler<ActionEvent>() {
