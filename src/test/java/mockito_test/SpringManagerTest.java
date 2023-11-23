@@ -1,6 +1,4 @@
 package mockito_test;
-
-import org.FPAS.springApp.SpringJavaFxApplication;
 import org.FPAS.springApp.SpringManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,17 +10,19 @@ public class SpringManagerTest {
 
     @BeforeEach
     public void setUp() {
-        SpringManager.startSpringApp();
+
     }
 
     @AfterEach
     public void tearDown() {
-        SpringManager.stopSpringApp();
+
     }
 
     @Test
-    public void testSpringManager() {
-        SpringJavaFxApplication springApp = SpringManager.getSpringApp();
-        assertNotNull(springApp, "Spring application should not be null");
+    public void testStartAndStopSpringApp() {
+        SpringManager.startSpringApp();
+        assertNotNull(SpringManager.getSpringApp());
+
+        SpringManager.stopSpringApp();
     }
 }

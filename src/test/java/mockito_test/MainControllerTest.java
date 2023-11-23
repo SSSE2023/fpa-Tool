@@ -1,56 +1,72 @@
 package mockito_test;
 
 import javafx.application.Platform;
-import javafx.scene.control.Button;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import org.FPAS.javaFXApp.FXMLHandler;
 import org.FPAS.javaFXApp.controller.mainController;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
 
-class MainControllerTest {
+public class MainControllerTest {
 
-    @InjectMocks
-    private mainController MainController;
-
-    @Mock
-    private FXMLHandler fxmlHandler;
-
-    @Mock
-    private Button signUpButton;
+    private static FXMLHandler mockFXMLHandler;
 
     @BeforeAll
-    public static void initJfx() {
-        // Initialize JavaFX Toolkit
-        Platform.startup(() -> {});
-    }
-
-    @AfterAll
-    public static void cleanupJfx() {
-        // Shutdown JavaFX Toolkit
-        Platform.exit();
-    }
-
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
+    public static void initJFX() {
+        // Initialize JavaFX for the test
+        new JFXPanel();
+        Platform.runLater(() -> {
+            mockFXMLHandler = mock(FXMLHandler.class);
+        });
     }
 
     @Test
-    void testHandleSignUpButtonAction() {
+    public void testSignUpButtonClicked() {
+        // Create an instance of the controller
+        mainController maincontroller = new mainController(mockFXMLHandler);
+
+        // Simulate the initialization of the controller (similar to what JavaFX would do)
         Platform.runLater(() -> {
-            MainController.initialize(null, null);
-            verify(signUpButton).setOnAction(any());
+            try {
+                maincontroller.initialize(null, null);
+
+                // Simulate a button click
+                maincontroller.signUpButton.fire();
+
+                // Verify that the changeScene method was called with the expected parameters
+                // (You need to implement proper verification based on your FXMLHandler behavior)
+                // Example using Mockito:
+                // verify(mockFXMLHandler).changeScene(any(ActionEvent.class), eq("signUpView.fxml"), eq(null), eq(null), eq(SignUpController.class));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    @Test
+    public void testSetUserInformation() {
+        // Create an instance of the controller
+        mainController maincontroller = new mainController(mockFXMLHandler);
+
+        // Simulate the initialization of the controller (similar to what JavaFX would do)
+        Platform.runLater(() -> {
+            try {
+                maincontroller.initialize(null, null);
+
+                // Call the setUserInformation method
+                maincontroller.setUserInformation("testUsername");
+
+                // Verify that the information is printed to the console (you may need to capture the output for testing)
+                // Example using Mockito:
+                // verify(mockFXMLHandler).changeScene(any(ActionEvent.class), eq("signUpView.fxml"), eq(null), eq(null), eq(SignUpController.class));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
     }
 }

@@ -19,7 +19,7 @@ public class mainController implements Initializable {
     private Button loginButton;
 
     @FXML
-    private Button signUpButton;
+    public Button signUpButton;
 
     private final FXMLHandler fxmlHandler;
 

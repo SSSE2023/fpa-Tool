@@ -33,6 +33,8 @@ public class PortfolioServiceTest {
     private BenchmarkRepository benchmarkRepository;
     @Mock
     private InvestmentsRepository investmentsRepository;
+    @Mock
+    private InflationBenchmarkRepository inflationBenchmarkRepository;  // Add this mock
 
     @BeforeEach
     void setUp() {
@@ -54,6 +56,9 @@ public class PortfolioServiceTest {
 
         List<Benchmark> benchmarkList = Arrays.asList(new Benchmark());
         when(benchmarkRepository.findAll()).thenReturn(benchmarkList);
+
+        // Add this line to mock inflationBenchmarkRepository
+        when(inflationBenchmarkRepository.findAll()).thenReturn(Arrays.asList(new InflationBenchmark()));
 
         portfolioService.loadLineChartData(lineChart);
     }
