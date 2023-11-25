@@ -97,8 +97,16 @@ public class PortfolioController implements Initializable {
         double riskRating = portfolioService.calculateRiskRating();
         double totalPortfolioValue = portfolioService.totalPortfolioValue();
 
-        String riskRatingSentence = "The portfolio's risk rating currently stands at %.2f.";
+        String riskRatingSentence = "%.2f";
         riskRatingLabel.setText(String.format(riskRatingSentence, riskRating));
+        if (riskRating < 2) {
+            riskRatingLabel.setStyle("-fx-text-fill: green;");
+        } else if (riskRating < 5) {
+            riskRatingLabel.setStyle("-fx-text-fill: orange;");
+        } else {
+            riskRatingLabel.setStyle("-fx-text-fill: red;");
+        }
+
 
         String portfolioValueSentence = "$%.2f";
         portfolioLabel.setText(String.format(portfolioValueSentence, totalPortfolioValue));

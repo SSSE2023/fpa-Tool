@@ -142,3 +142,23 @@
 .table-row-cell:selected {
 
 }
+#riskRatingLabel{
+    -fx-font-family: 'Roboto';
+    -fx-font-size: 36;
+    -fx-font-weight: bold;
+}
+#riskLabel{
+    -fx-font-weight: bold;
+    -fx-font-size: 20;
+
+
+}
+.tableHeaders{
+    -fx-font-weight: bold;
+}
+#circleRiskRating{
+    -fx-fill: #323B4F;
+    -fx-stroke: white; /* Stroke color */
+    -fx-stroke-width: 3;
+
+}
