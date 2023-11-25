@@ -62,7 +62,7 @@
         </VBox>
         <AnchorPane fx:id="dashBoard" layoutX="118.0" layoutY="77.0" prefHeight="495.0" prefWidth="747.0">
             <children>
-                <LineChart fx:id="lineChart" layoutX="317.0" layoutY="13.0" prefHeight="252.0" prefWidth="414.0">
+                <LineChart fx:id="lineChart" layoutX="317.0" layoutY="19.0" prefHeight="252.0" prefWidth="414.0">
                     <xAxis>
                         <CategoryAxis side="BOTTOM" />
                     </xAxis>
@@ -70,7 +70,7 @@
                         <NumberAxis side="LEFT" />
                     </yAxis>
                 </LineChart>
-                <BarChart fx:id="barChart" layoutX="12.0" layoutY="13.0" prefHeight="252.0" prefWidth="316.0">
+                <BarChart fx:id="barChart" layoutX="8.0" layoutY="19.0" prefHeight="252.0" prefWidth="316.0">
                     <xAxis>
                         <CategoryAxis side="BOTTOM" />
                     </xAxis>
@@ -78,15 +78,10 @@
                         <NumberAxis side="LEFT" />
                     </yAxis>
                 </BarChart>
-                <Text layoutX="489.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Portfolio Value (Year)" />
-                <Text layoutX="172.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Assets" />
+                <Text layoutX="518.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="tableHeaders" text="Benchmark" />
+                <Text layoutX="165.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="tableHeaders" text="Inflation" />
             <AnchorPane fx:id="innerAnchor" layoutX="8.0" layoutY="261.0" prefHeight="228.0" prefWidth="735.0">
                <children>
-                  <Label fx:id="riskRatingLabel" layoutX="339.0" layoutY="48.0" prefHeight="54.0" prefWidth="384.0" textAlignment="CENTER">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
                   <PieChart fx:id="pieChart" layoutX="32.0" prefHeight="228.0" prefWidth="298.0" />
                   <Circle fx:id="pieChartCircle" fill="DODGERBLUE" layoutX="181.0" layoutY="114.0" radius="65.0" stroke="BLACK" strokeType="INSIDE" />
                   <Label fx:id="portfolioLabel" layoutX="141.0" layoutY="99.0" prefHeight="30.0" prefWidth="85.0" textAlignment="CENTER">
@@ -94,10 +89,22 @@
                         <Font size="17.0" />
                      </font>
                   </Label>
+                  <Circle fx:id="circleRiskRating" fill="DODGERBLUE" layoutX="541.0" layoutY="114.0" radius="80.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label fx:id="riskRatingLabel" layoutX="504.0" layoutY="88.0" prefHeight="69.0" prefWidth="106.0" textAlignment="CENTER">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
                   <Text fx:id="totalNetWorth" layoutX="136.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Net Worth" wrappingWidth="97.470703125" />
+                  <Text fx:id="riskLabel" fill="WHITE" layoutX="488.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Risk Rating">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
-            <Text layoutX="148.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Portofolio Value" />
+            <Text layoutX="144.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="tableHeaders" text="Portofolio Value" />
+            <Text layoutX="309.0" layoutY="14.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="tableHeaders" text="Performance" />
             </children>
         </AnchorPane>
         <BorderPane fx:id="navBar" prefHeight="77.0" prefWidth="865.0">
