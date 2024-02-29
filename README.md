@@ -1,7 +1,7 @@
-# Financial Portfolio Analysis System
+# Financial Portfolio Analysis Tool
 
 ## Overview
-The Financial Portfolio Analysis System is an application designed to empower users in effectively managing their financial portfolios. This includes tracking diverse assets such as stocks, bonds, mutual funds, and other investments. The application not only provides users with a user-friendly graphical interface but also offers tools for in-depth analysis and optimization of their investments, enabling informed financial decisions.
+The Financial Portfolio Analysis Tool is an application designed to empower users in effectively managing their financial portfolios. This includes tracking diverse assets such as stocks, bonds, mutual funds, and other investments. The application not only provides users with a user-friendly graphical interface but also offers tools for in-depth analysis and optimization of their investments, enabling informed financial decisions.
 
 ## Goals
 1. **Graphical User Interface (GUI):** Develop an intuitive and user-friendly interface for easy navigation and data visualization.
